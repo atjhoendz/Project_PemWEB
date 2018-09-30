@@ -14,7 +14,7 @@ Menjadi media untuk mengatur dan mengorganisir dari segi keuangan hingga pekerja
 
 Seluruh mahasiswa yang mengontrak rumah dan umum seluruh kalangan
 
-# Mockup
+# Mockup Home Sementara
 ![MockUP_Sementara](https://github.com/atjhoendz/Project_PemWEB/blob/master/resources/mockup/mockup.png?raw=true)
 
 # Authors
