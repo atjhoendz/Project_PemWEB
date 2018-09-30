@@ -14,6 +14,9 @@ Menjadi media untuk mengatur dan mengorganisir dari segi keuangan hingga pekerja
 
 Seluruh mahasiswa yang mengontrak rumah dan umum seluruh kalangan
 
+# Mockup
+![MockUP_Sementara](https://github.com/atjhoendz/Project_PemWEB/blob/master/resources/mockup/mockup.png?raw=true)
+
 # Authors
 
 - Mohamad Achun Armando (140810170020) - [Atjhoendz](https://github.com/atjhoendz)
