@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <script src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
 </head>
 <body>
@@ -21,7 +21,9 @@
             <input type="text" placeholder="Home Name"><br>
             <input type="password" placeholder="Password"><br>
             <input type="password" placeholder="Confirm Password"><br>
-            <input class="btn" type="submit" value="Login">
+            <input class="btn" type="submit" value="Login"><br>
+            <a class="register" href="<?php echo site_url('register'); ?>"><u>Dont have an account? Register now!</u></a>
+            
         </form>
     </div>
 </body>
