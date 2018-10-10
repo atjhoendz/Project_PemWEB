@@ -26,6 +26,12 @@ body::before{
     padding-right: 2%;
 }
 
+.regist-container{
+    padding-top: 6%;
+    max-width: 700px;
+    text-align: center;
+}
+
 .bg-text {
     background-color: rgba(0,0,0, 0.2); 
     color: white;
@@ -41,14 +47,6 @@ body::before{
     color: white;
     border-radius: 5px;
     padding-top: 2%;
-    text-align: center;
-}
-
-.form-regist-container{
-    padding-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
     text-align: center;
 }
 
@@ -83,7 +81,8 @@ input[type=submit]{
 
 .register-text {
     text-align: center;
-    color: black;
+    color: white;
+    font-weight: bold;
 }
 
 form > a{
