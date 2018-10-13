@@ -25,7 +25,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas omnis inventore quidem voluptas repudiandae esse dolorem iusto numquam, aliquid ad eligendi dignissimos at, quae quod velit voluptate tenetur! Laborum, optio.</p>
             </div>
             <div class="col-sm-4 form-login-container">
-                <form>
+                <form action="<?php echo site_url('homepage');?>">
                     <input type="text" placeholder="Home Name"><br>
                     <input type="password" placeholder="Password"><br>
                     <input type="password" placeholder="Confirm Password"><br>
