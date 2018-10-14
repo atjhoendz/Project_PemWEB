@@ -8,6 +8,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/bootstrap.css');?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- Jquery -->
+    <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
+    <!-- Bootstrap JS -->
+    <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -21,10 +25,16 @@
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#">Home</a>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
                 </li>
                 <li>
-                    <a href="#HousemateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Housemate</a>
+                    <a href="#HousemateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        Housemate
+                    </a>
                     <ul class="collapse list-unstyled" id="HousemateSubmenu">
                         <li>
                             <a href="#">Housemate 1</a>
@@ -41,7 +51,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#FinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Finance</a>
+                    <a href="#FinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-dollar-sign"></i>
+                        Finance
+                    </a>
                     <ul class="collapse list-unstyled" id="FinanceSubmenu">
                         <li>
                             <a href="#">Income</a>
@@ -52,18 +65,39 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Task</a>
+                    <a href="#">
+                        <i class="fas fa-tasks"></i>
+                        Task
+                    </a>
                 </li>
             </ul>
-            <div class="sidebar-footer bayangan-atas">
-                <button id="btn-options" class="btn-options">
-                    <i class="fas fa-cogs"></i>
-                    <span>Options</span>
-                </button>
-            </div>
+            <ul class="list-unstyled components sidebar-footer bayangan-atas dropup">
+                <li>
+                    <ul class="collapse list-unstyled" id="MenuOptions">
+                        <li>
+                            <a href="<?php echo site_url();?>">
+                                <i class="fas fa-unlock"></i>
+                                Logout
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-info-circle"></i>
+                                About
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="#MenuOptions" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>Options</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
-        
+
+        <!-- Content -->
         <div id="content">
+            <!-- Header -->
             <nav class="navbar navbar-expand bg-light bayangan-bawah">
                 <div class="container">
                     <button type="button" id="sidebarCollapse" class="btn">
@@ -73,7 +107,7 @@
                     <span id="nameHome">User Home Name</span>
                 </div>
             </nav>
-
+            <!-- Main -->
             <div id="main">
                 <div class="container">
                     <div class="row">
@@ -130,19 +164,14 @@
                     </div>
                 </div>
             </div>
-            
+            <!-- Footer -->
             <div class="footer bayangan-atas">
                 <span>&copy Project Pemrograman Web 2018 | E-Work Corp.</span>
             </div>
         </div>
     </div>
 
-    <!-- Jquery -->
-    <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
-    
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
-
+    <!-- Script collapse Sidebar -->
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
