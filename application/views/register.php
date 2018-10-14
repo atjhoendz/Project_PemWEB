@@ -10,16 +10,17 @@
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
 </head>
 <body>
+    <?php echo validation_errors(); ?>
     <div class="container regist-container">
         <div class="row">
             <div class="col-sm-12">
-                <form>
+                <?php echo form_open('register'); ?>
                     <h1 class="register-text">Create Account</h1>
-                    <input class="input-register" type="text" placeholder="Username"><br>
-                    <input class="input-register" type="password" placeholder="Password"><br>
-                    <input class="input-register" type="password" placeholder="Confirm Password"><br>
-                    <input class="input-register" type="text" placeholder="Nomor Telepon"><br>                
-                    <input class="input-register" type="email" placeholder="Email"><br>
+                    <input class="input-register" type="text" placeholder="Username" name="username"><br>
+                    <input class="input-register" type="password" placeholder="Password" name="password"><br>
+                    <input class="input-register" type="password" placeholder="Confirm Password" name="confirm_password"><br>
+                    <input class="input-register" type="text" placeholder="Nomor Telepon" name="nomor"><br>                
+                    <input class="input-register" type="email" placeholder="Email" name="email"><br>
                     <input class="btn" type="submit" value="Register"><br>
                 </form>
             </div>
