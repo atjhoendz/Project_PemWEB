@@ -168,18 +168,19 @@ a:focus {
 }
 
 #sidebar .sidebar-footer{
-    padding: 5px;
-    border-top: 1px solid #78909c;
     background-color: #78909c;
     position: absolute;
     bottom: 0;
+    margin: 0;
     z-index: 999;
     width: 100%;
+    color: #fff;
+    text-align: left;
+    padding: 0px !important;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #78909c;
     background: #78909c;
 }
 
@@ -222,16 +223,15 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-.btn-options{
-    background: none;
-    outline: none;
-    width: 100%;
-    border: 0;
-    color: #fff;
-    padding: 0;
-    margin: 0;
-    font-size: 20px;
-    text-align: left;
+.a-group{
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.a-group > a{
+    position: relative;
+    flex: 0 1 auto;
 }
 
 .btn-home{
