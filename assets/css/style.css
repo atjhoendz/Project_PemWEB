@@ -165,6 +165,8 @@ a:focus {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #90a4ae;
+    height: 20%;
+    margin: auto;
 }
 
 #sidebar .sidebar-footer{
@@ -227,11 +229,15 @@ ul ul a {
     position: relative;
     display: inline-flex;
     vertical-align: middle;
+    width: 100%;
 }
 
-.a-group > a{
-    position: relative;
-    flex: 0 1 auto;
+.a-left{
+    width: 70%;
+}
+
+.a-right{
+    width: 30%;
 }
 
 .btn-home{

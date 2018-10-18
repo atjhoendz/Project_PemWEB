@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="<?php echo base_url("assets/image/ehome-solid.png");?>">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/bootstrap.css');?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <!-- Jquery -->
     <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>   
     <!-- Bootstrap JS -->
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
+    
 </head>
 <body>
     <div class="wrapper">
@@ -31,36 +35,64 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#HousemateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="a-group">
+                        <a href="#" class="a-left">
                         <i class="fas fa-users"></i>
                         Housemate
                     </a>
+                    <a href="#HousemateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-right">
+                        <span class="sr-only">Toggle</span>
+                    </a>
+                    </div>
                     <ul class="collapse list-unstyled" id="HousemateSubmenu">
                         <li>
-                            <a href="#">Housemate 1</a>
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                Housemate 1
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Housemate 2</a>
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                Housemate 2
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Housemate 3</a>
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                Housemate 3
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Housemate 4</a>
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                Housemate 4
+                            </a>
                         </li>    
                     </ul>
                 </li>
                 <li>
-                    <a href="#FinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-dollar-sign"></i>
-                        Finance
-                    </a>
+                    <div class="a-group">
+                        <a href="#" class="a-left">
+                            <i class="fas fa-dollar-sign"></i>
+                            Finance
+                        </a>
+                        <a href="#FinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-right">
+                            <span class="sr-only">Toggle</span>
+                        </a>
+                    </div>
                     <ul class="collapse list-unstyled" id="FinanceSubmenu">
                         <li>
-                            <a href="#">Income</a>
+                            <a href="#">
+                                <i class="fas fa-chevron-circle-down"></i>
+                                Income
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Expenses</a>
+                            <a href="#">
+                                <i class="fas fa-chevron-circle-up"></i>
+                                Expenses
+                            </a>
                         </li>
                     </ul>
                 </li>
