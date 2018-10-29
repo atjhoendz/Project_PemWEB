@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="<?php echo base_url("assets/image/ehome-solid.png");?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
@@ -25,10 +26,10 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas omnis inventore quidem voluptas repudiandae esse dolorem iusto numquam, aliquid ad eligendi dignissimos at, quae quod velit voluptate tenetur! Laborum, optio.</p>
             </div>
             <div class="col-sm-4 form-login-container">
-                <form action="<?php echo site_url('homepage');?>">
-                    <input type="text" placeholder="Home Name"><br>
-                    <input type="password" placeholder="Password"><br>
-                    <input type="password" placeholder="Confirm Password"><br>
+                <form action="<?php echo base_url('loginpage/login');?>" method="post">
+                    <input type="text" name="homename" placeholder="Home Name"><br>
+                    <input type="password" name="password" placeholder="Password"><br>
+                    <input type="password" name="confirmpwd" placeholder="Confirm Password"><br>
                     <input class="btn" type="submit" value="Login"><br>
                     <a href="<?php echo site_url('register'); ?>"><u>Dont have an account? Register now!</u></a>
                 </form>
