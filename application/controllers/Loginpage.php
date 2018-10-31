@@ -11,12 +11,12 @@ class Loginpage extends CI_Controller{
     }
     
     public function login(){
-        $homename = $this->input->post('homename');
+        $username = $this->input->post('homename');
         $pass = $this->input->post('password');
         $repass = $this->input->post('confirmpwd');
 
-        $home = array('nama_rumah' => $homename);
-        $user = array('password' => $pass);
+        $uname = array('username' => $username);
+        $pwd = array('password' => $pass);
 
         function alert($errorname){
             if($errorname == "pwdnotsame"){
@@ -28,10 +28,10 @@ class Loginpage extends CI_Controller{
             }
         }
 
-        if($homename != NULL && $pass != NULL){
+        if($username != NULL && $pass != NULL){
             if($pass == $repass){
-                if($this->login_model->cek_login('rumah', $home)->num_rows() > 0){
-                    if($this->login_model->cek_login('user', $user)->num_rows() > 0){
+                if($this->login_model->cek_login('user', $uname)->num_rows() > 0){
+                    if($this->login_model->cek_login('user', $pwd)->num_rows() > 0){
                         redirect(site_url('homepage'));
                     }else{
                         alert("akunsalah");
