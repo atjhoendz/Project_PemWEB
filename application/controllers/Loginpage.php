@@ -29,18 +29,14 @@ class Loginpage extends CI_Controller{
         }
 
         if($username != NULL && $pass != NULL){
-            if($pass == $repass){
-                if($this->login_model->cek_login('user', $uname)->num_rows() > 0){
-                    if($this->login_model->cek_login('user', $pwd)->num_rows() > 0){
-                        redirect(site_url('homepage'));
-                    }else{
-                        alert("akunsalah");
-                    }
+            if($this->login_model->cek_login('user', $uname)->num_rows() > 0){
+                if($this->login_model->cek_login('user', $pwd)->num_rows() > 0){
+                    redirect(site_url('homepage'));
                 }else{
                     alert("akunsalah");
                 }
             }else{
-                alert("pwdnotsame");
+                alert("akunsalah");
             }
         }else{
             alert("kosong");
