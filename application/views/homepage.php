@@ -210,6 +210,10 @@
                 $('#sidebar, #content').toggleClass('active');
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                if($(window).width() <= 768){
+                    $('#main').toggleClass('hide');
+                    $('#nameHome').toggleClass('hide');
+                }
             });
         });
     </script>
