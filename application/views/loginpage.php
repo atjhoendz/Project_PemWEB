@@ -27,9 +27,8 @@
             </div>
             <div class="col-sm-4 form-login-container">
                 <form action="<?php echo base_url('loginpage/login');?>" method="post">
-                    <input type="text" name="homename" placeholder="Username"><br>
-                    <input type="password" name="password" placeholder="Password"><br>
-                    <input type="password" name="confirmpwd" placeholder="Confirm Password"><br>
+                    <input type="text" name="homename" placeholder="Username" required><br>
+                    <input type="password" name="password" placeholder="Password" required><br>
                     <input class="btn" type="submit" value="Login"><br>
                     <a href="<?php echo site_url('register'); ?>"><u>Dont have an account? Register now!</u></a>
                 </form>
