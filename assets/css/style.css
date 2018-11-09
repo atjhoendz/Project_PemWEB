@@ -1,5 +1,5 @@
-body::before{
-    background: url(../image/home.jpg) no-repeat center center fixed;
+body{
+    background: url(../image/home2_blurred.jpg) no-repeat center center fixed;
     content: '';
     z-index: -1;
     width: 100%;
@@ -9,11 +9,6 @@ body::before{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
 }
 
 .login-container{
@@ -317,6 +312,14 @@ ul ul a {
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+#main .container{
+    margin-bottom: 20px;
+}
+
+.hide{
+    display: none;
+}
+
 .footer{
     background-color: #eeeeee;
     text-align: right;
@@ -334,7 +337,7 @@ ul ul a {
     #sidebar {
         margin-left: -250px;
     }
-    #sidebar.active {
+    #sidebar.active{
         margin-left: 0;
     }
     #content {
