@@ -138,6 +138,7 @@ a:focus {
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
+    cursor: pointer;
 }
 
 #sidebar {
@@ -282,18 +283,18 @@ ul ul a {
     padding: 5px;
 }
 
-#main .column{
+#mainContainer .column{
     float: left;
     width: 25%;
     padding: 0 10px;
 }
 
-#main .row{
+#mainContainer .row{
     margin: 0 -5px;
     margin-top: 5%;
 }
 
-#main .row:after{
+#mainContainer .row:after{
     content: "";
     display: table;
     clear: both;
@@ -316,8 +317,70 @@ ul ul a {
     margin-bottom: 20px;
 }
 
+#housemateContainer{
+    margin-top: 4%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #78909c;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+}
+
+#housemateContainer .judul{
+    text-align: center;
+}
+
+#financeContainer{
+    margin-top: 4%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #78909c;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+}
+
+#financeContainer .judul{
+    text-align: center;
+}
+
+#taskContainer{
+    margin-top: 4%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #78909c;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+}
+
+#taskContainer .judul{
+    text-align: center;
+}
+
+#taskContainer .row{
+    margin: 0 -5px;
+    margin-top: 5%;
+}
+
+hr{
+    background-color: #fff;
+    height: 3px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .hide{
-    display: none;
+    display: none; 
+}
+
+.aktif{
+    background: #607d8b;
 }
 
 .footer{
