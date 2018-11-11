@@ -15,7 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>   
     <!-- Bootstrap JS -->
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
-    
+    <!-- Homepage JS -->
+    <script src="<?php echo base_url('assets/js/homepage.js');?>"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -26,17 +27,18 @@
                     <i class="fas fa-home"></i>
                     <span>E-Home</span>
                 </button>
+                <input type="hidden" id="baseUrl" value="<?php echo base_url('homepage'); ?>">
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#">
+                    <a id="homeBtn">
                         <i class="fas fa-home"></i>
                         Home
                     </a>
                 </li>
                 <li>
                     <div class="a-group">
-                        <a href="#" class="a-left">
+                        <a id="housemateBtn" class="a-left">
                         <i class="fas fa-users"></i>
                         Housemate
                     </a>
@@ -73,7 +75,7 @@
                 </li>
                 <li>
                     <div class="a-group">
-                        <a href="#" class="a-left">
+                        <a id="financeBtn" class="a-left">
                             <i class="fas fa-dollar-sign"></i>
                             Finance
                         </a>
@@ -97,7 +99,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a id="btnTask" style="bakground:">
                         <i class="fas fa-tasks"></i>
                         Task
                     </a>
@@ -142,56 +144,94 @@
             <!-- Main -->
             <div id="main">
                 <div class="container">
-                    <div class="row">
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ad, cupiditate voluptas quis temporibus vero iusto voluptatum tempora molestiae.</p>
+                    <div id="mainContainer">
+                        <div class="row">
+                            <div class="column">
+                                <div class="card">
+                                    <h1>Finance</h1>
+                                    <hr>
+                                    <p id="income">Pemasukan : Rp 10.000,-</p>
+                                    <p id="expanses">Pengeluaran : Rp 150.000,-</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <h3>Upcoming Task</h3>
+                                    <hr>
+                                    <p>20 Nov 2018 : Bayar Wifi</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <h1>Finance</h1>
+                                    <hr>
+                                    <p>blablab</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <h1>Finance</h1>
+                                    <hr>
+                                    <p>blablab</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
+                        <div class="row">
+                            <div class="column">
+                                <div class="card">
+                                    <h3>Housemate 1</h3>
+                                    <hr>
+                                    <p>Moh. Achun Armando</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
+                            <div class="column">
+                                <div class="card">
+                                    <h3>Housemate 2</h3>
+                                    <hr>
+                                    <p>M. Fahmi Alwan</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
+                            <div class="column">
+                                <div class="card">
+                                    <h3>Housemate 3</h3>
+                                    <hr>
+                                    <p>Imron Madani</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <h3>Housemate 4</h3>
+                                    <hr>
+                                    <p>M. Hafidz Alfarizi</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
-                            </div>
+                    <div id="housemateContainer" class="hide">
+                        <div class="judul">
+                            <h1>Housemate</h1>
                         </div>
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
-                            </div>
+                        <hr>
+                        <div class="isi">
+                            <h1>isi</h1>
                         </div>
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
-                            </div>
+                    </div>
+                    <div id="financeContainer" class="hide">
+                        <div class="judul">
+                            <h1>Finance</h1>
                         </div>
-                        <div class="column">
-                            <div class="card">
-                                <h1>Finance</h1>
-                                <p>blablab</p>
-                            </div>
+                        <hr>
+                        <div class="isi">
+                            <h1>isi</h1>
+                        </div>
+                    </div>
+                    <div id="taskContainer" class="hide">
+                        <div class="judul">
+                            <h1>Task</h1>
+                        </div>
+                        <hr>
+                        <div class="isi">
+                            <h1>isi</h1>
                         </div>
                     </div>
                 </div>
@@ -202,20 +242,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Script collapse Sidebar -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                if($(window).width() <= 768){
-                    $('#main').toggleClass('hide');
-                    $('#nameHome').toggleClass('hide');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
