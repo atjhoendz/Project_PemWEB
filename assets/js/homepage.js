@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    
+    //on window resize will set margin-bottom of mainContainer
+    $(window).on('resize', function(){
+        var win = $(this);
+        if(win.width() <= 768){
+            var tinggifooter = $('#footer').height();
+            var setTinggi = tinggifooter+'px';
+            $('#main .container').css({"margin-bottom":setTinggi});
+        }
+    });
 
     // collapse sidebar
     $('#sidebarCollapse').on('click', function () {
