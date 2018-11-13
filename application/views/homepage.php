@@ -32,14 +32,14 @@
             <ul class="list-unstyled components">
                 <li class="active">
                     <a id="homeBtn">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-home menu-icon"></i>
                         Home
                     </a>
                 </li>
                 <li>
                     <div class="a-group">
                         <a id="housemateBtn" class="a-left">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users menu-icon"></i>
                         Housemate
                     </a>
                     <a href="#HousemateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-right">
@@ -76,7 +76,7 @@
                 <li>
                     <div class="a-group">
                         <a id="financeBtn" class="a-left">
-                            <i class="fas fa-dollar-sign"></i>
+                            <i class="fas fa-dollar-sign menu-icon"></i>
                             Finance
                         </a>
                         <a href="#FinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-right">
@@ -100,7 +100,7 @@
                 </li>
                 <li>
                     <a id="btnTask" style="bakground:">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fas fa-tasks menu-icon"></i>
                         Task
                     </a>
                 </li>
@@ -122,7 +122,7 @@
                         </li>
                     </ul>
                     <a href="#MenuOptions" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-cogs menu-icon"></i>
                         <span>Options</span>
                     </a>
                 </li>
@@ -148,61 +148,62 @@
                         <div class="row">
                             <div class="column">
                                 <div class="card">
-                                    <h1>Finance</h1>
-                                    <hr>
-                                    <p id="income">Pemasukan : Rp 10.000,-</p>
-                                    <p id="expanses">Pengeluaran : Rp 150.000,-</p>
+                                    <div class="card-head">
+                                        Finance
+                                    </div>
+                                    <div class="card-body">
+                                        <p id="income">Pemasukan : Rp 10.000,-</p>
+                                        <p id="expenses">Pengeluaran : Rp 150.000,-</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
-                                    <h3>Upcoming Task</h3>
-                                    <hr>
-                                    <p>20 Nov 2018 : Bayar Wifi</p>
+                                    <div class="card-head">
+                                        Upcoming Task
+                                    </div>
+                                    <div class="card-body">
+                                        20 Nov 2018 : Bayar Wifi
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
-                                    <h1>Finance</h1>
-                                    <hr>
-                                    <p>blablab</p>
+                                    <div class="card-head">Finance</div>
+                                    <div class="card-body">blablab</div>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
-                                    <h1>Finance</h1>
-                                    <hr>
-                                    <p>blablab</p>
+                                    <div class="card-head">Finance</div>
+                                    <div class="card-body">blablab</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="column">
                                 <div class="card">
-                                    <h3>Housemate 1</h3>
-                                    <hr>
-                                    <p>Moh. Achun Armando</p>
+                                    <div class="card-head">Housemate 1</div>
+                                    <div class="card-body">Achun</div>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
-                                    <h3>Housemate 2</h3>
-                                    <hr>
-                                    <p>M. Fahmi Alwan</p>
+                                    <div class="card-head">Housemate 2</div>
+                                    <div class="card-body">Miwon</div>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
-                                    <h3>Housemate 3</h3>
-                                    <hr>
-                                    <p>Imron Madani</p>
+                                    <div class="card-head">Housemate 3</div>
+                                    <div class="card-body">Dani</div>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
-                                    <h3>Housemate 4</h3>
-                                    <hr>
-                                    <p>M. Hafidz Alfarizi</p>
+                                    <div class="card-head">Housemate 4</div>
+                                    <div class="card-body">Ewok</div>
                                 </div>
                             </div>
                         </div>
