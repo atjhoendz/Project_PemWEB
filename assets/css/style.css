@@ -302,11 +302,37 @@ ul ul a {
 
 #main .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    /* padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
     text-align: center;
     background-color: #78909c;
     color: #fff;
-    border: 2px solid #fff;
+    border: 2px solid #fff; */
+    border: 0px;
+    border-radius: 10px 10px 10px 10px;    
+}
+
+#main .card-head{
+    height: 40px;
+    width: inherit;
+    background-color: #90a4ae;
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding-top: 5px;
+    color: white;
+    font-weight: bold;
+    
+}
+
+#main .card-body{
+    padding: 16px;
+    text-align: center;
+    background-color: ghostwhite;
+    color:grey;
+    min-height: 140px;
+    border-radius: 0px 0px 10px 10px;
 }
 
 #main .card:hover{
@@ -392,6 +418,10 @@ hr{
     left: 0;
     width: 100%;
     padding: 5px;
+}
+
+.menu-icon {
+    width: 30px;
 }
 
 /* media queries */
