@@ -237,7 +237,7 @@
                 </div>
             </div>
             <!-- Footer -->
-            <div class="footer bayangan-atas">
+            <div id="footer" class="footer bayangan-atas">
                 <span>&copy Project Pemrograman Web 2018 | E-Work Corp.</span>
             </div>
         </div>
