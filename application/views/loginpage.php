@@ -9,32 +9,45 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/loginpage.js');?>"></script>
 </head>
 <body>
-    <div class="container-fluid date-container">
-        <div class="row">
-            <div class="col-sm-12 date">
-                <span id="tanggal"></span>
+    <div class="container">
+        <div class="container-fluid date-container">
+            <div class="row">
+                <div class="col-sm-12 date">
+                    <span id="tanggal"></span>
+                </div>
+            </div>
+        </div>
+        <div id="loginContainer" class="login-container">
+            <div class="row">
+                <div class="col-sm-8 bg-text">
+                    <h1><strong>E-Home</strong></h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestias mollitia eius dolorum maxime dignissimos quos hic impedit assumenda ab, alias porro corporis et consequuntur quam, temporibus laborum molestiae repudiandae!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas omnis inventore quidem voluptas repudiandae esse dolorem iusto numquam, aliquid ad eligendi dignissimos at, quae quod velit voluptate tenetur! Laborum, optio.</p>
+                </div>
+                <div class="col-sm-4 form-login-container">
+                    <form method="post">
+                        <input type="hidden" id="baseUrl" value="<?php echo base_url();?>">
+                        <input id="txtUname" type="text" name="homename" placeholder="Username" required><br>
+                        <input id="txtPwd" type="password" name="password" placeholder="Password" required><br>
+                        <input id="btnLogin" class="btn" type="submit" value="Login"><br>
+                        <a href="<?php echo site_url('register'); ?>"><u>Dont have an account? Register now!</u></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <span id="closePopUp" class="close">&times;</span>
+                <p id="message">Message</p>
             </div>
         </div>
     </div>
-    <div class="container login-container">
-        <div class="row">
-            <div class="col-sm-8 bg-text">
-                <h1><strong>E-Home</strong></h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestias mollitia eius dolorum maxime dignissimos quos hic impedit assumenda ab, alias porro corporis et consequuntur quam, temporibus laborum molestiae repudiandae!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas omnis inventore quidem voluptas repudiandae esse dolorem iusto numquam, aliquid ad eligendi dignissimos at, quae quod velit voluptate tenetur! Laborum, optio.</p>
-            </div>
-            <div class="col-sm-4 form-login-container">
-                <form action="<?php echo base_url('loginpage/login');?>" method="post">
-                    <input type="text" name="homename" placeholder="Username" required><br>
-                    <input type="password" name="password" placeholder="Password" required><br>
-                    <input class="btn" type="submit" value="Login"><br>
-                    <a href="<?php echo site_url('register'); ?>"><u>Dont have an account? Register now!</u></a>
-                </form>
-            </div>
-        </div>
-    </div>
+
+    
 </body>
 <script type="text/javascript">
     var timer = setInterval(tanggal, 1000);
