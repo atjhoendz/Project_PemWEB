@@ -11,35 +11,16 @@ class Loginpage extends CI_Controller{
     }
     
     public function login(){
-        $username = $this->input->post('homename');
-        $pass = $this->input->post('password');
-        $repass = $this->input->post('confirmpwd');
+        $uname = $this->input->post('username');
+        $pwd = $this->input->post('password');
 
-        $uname = array('username' => $username);
-        $pwd = array('password' => $pass);
-
-        function alert($errorname){
-            if($errorname == "pwdnotsame"){
-                echo "Kedua Password tidak cocok Silahkan input kembali";
-            }else if($errorname == "akunsalah"){
-                echo "Homename atau password yang dimasukan belum terdaftar Silahkan Register terlebih dahulu";
-            }else if($errorname == "kosong"){
-                echo "Field tidak boleh kosong";
-            }
-        }
-
-        if($username != NULL && $pass != NULL){
-            if($this->login_model->cek_login('user', $uname)->num_rows() > 0){
-                if($this->login_model->cek_login('user', $pwd)->num_rows() > 0){
-                    redirect(site_url('homepage'));
-                }else{
-                    alert("akunsalah");
-                }
+        if($uname != NULL && $pwd != NULL){
+            $data = $this->login_model->cek_login('user', $uname, $pwd)->num_rows();
+            if($data == 1){
+                echo "Login Berhasil...";
             }else{
-                alert("akunsalah");
+                echo "Username or Password is Wrong...";
             }
-        }else{
-            alert("kosong");
         }
     }
 }
