@@ -17,6 +17,7 @@
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
     <!-- Homepage JS -->
     <script src="<?php echo base_url('assets/js/homepage.js');?>"></script>
+
 </head>
 <body>
     <div class="wrapper">
@@ -27,7 +28,7 @@
                     <i class="fas fa-home"></i>
                     <span>E-Home</span>
                 </button>
-                <input type="hidden" id="baseUrl" value="<?php echo base_url('homepage'); ?>">
+                <input type="hidden" id="baseUrl" value="<?php echo site_url('homepage'); ?>">
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
@@ -39,38 +40,32 @@
                 <li>
                     <div class="a-group">
                         <a id="housemateBtn" class="a-left">
-                        <i class="fas fa-users menu-icon"></i>
-                        Housemate
-                    </a>
-                    <a href="#HousemateSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-right">
-                        <span class="sr-only">Toggle</span>
-                    </a>
+                            <i class="fas fa-users menu-icon"></i>
+                            Housemate
+                         </a>
+                        <a href="#HousemateSubmenu" id="get_housemate" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-right">
+                            <span class="sr-only">Toggle</span>
+                        </a>
                     </div>
                     <ul class="collapse list-unstyled" id="HousemateSubmenu">
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-user"></i>
-                                Housemate 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-user"></i>
-                                Housemate 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-user"></i>
-                                Housemate 3
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-user"></i>
-                                Housemate 4
-                            </a>
-                        </li>    
+                        <?php if(isset($housemate) || !empty($housemate)){
+                            $i=1;
+                            foreach ($housemate as $row) :?>
+                                <li>
+                                    <a href="<?php echo 'anggota/'.($i++);?>">
+                                        <i class="fas fa-user"></i>
+                                        <?php echo $row->nama_anggota;?>
+                                    </a>
+                                </li>   
+                            <?php endforeach; ?>
+                        <?php }else{ ?>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-user"></i>
+                                    No Housemate yet
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </li>
                 <li>
@@ -99,7 +94,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a id="btnTask" style="bakground:">
+                    <a id="btnTask">
                         <i class="fas fa-tasks menu-icon"></i>
                         Task
                     </a>
@@ -109,7 +104,7 @@
                 <li>
                     <ul class="collapse list-unstyled" id="MenuOptions">
                         <li>
-                            <a href="<?php echo site_url();?>">
+                            <a href="<?php echo site_url('homepage/logout');?>">
                                 <i class="fas fa-unlock"></i>
                                 Logout
                             </a>
@@ -138,7 +133,7 @@
                         <i class="fas fa-align-left"></i>
                         <span>Menu</span>
                     </button>
-                    <span id="nameHome">User Home Name</span>
+                    <span id="nameHome"><?php echo $this->session->username; ?></span>
                 </div>
             </nav>
             <!-- Main -->
@@ -182,39 +177,66 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="column">
-                                <div class="card">
-                                    <div class="card-head">Housemate 1</div>
-                                    <div class="card-body">Achun</div>
+                            <?php if(isset($housemate) || !empty($housemate)){
+                                $i=1;
+                                foreach ($housemate as $row) :?>
+                                    <div class="column">
+                                        <div class="card">
+                                            <div class="card-head">Housemate <?php echo $i++ ?></div>
+                                            <div class="card-body"><?php echo $row->nama_anggota;?></div>
+                                        </div>
+                                    </div>   
+                                <?php endforeach; ?>
+                            <?php }else{ ?>
+                                <div class="column">
+                                    <div class="card">
+                                        <div class="card-head">Housemate 0</div>
+                                        <div class="card-body">No Housemate Yet</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="column">
-                                <div class="card">
-                                    <div class="card-head">Housemate 2</div>
-                                    <div class="card-body">Miwon</div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="card">
-                                    <div class="card-head">Housemate 3</div>
-                                    <div class="card-body">Dani</div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="card">
-                                    <div class="card-head">Housemate 4</div>
-                                    <div class="card-body">Ewok</div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div id="housemateContainer" class="hide">
-                        <div class="judul">
-                            <h1>Housemate</h1>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="btn" id="addHousemate">
+                                    <i class="fas fa-plus-circle"></i>
+                                    Add Housemate
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn" id="editHousemate">
+                                    <i class="fas fa-user-edit"></i>
+                                    Edit Housemate
+                                </a>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="isi">
-                            <h1>isi</h1>
+                        <div class="row">
+                            <?php if(isset($housemate) || !empty($housemate)){
+                                foreach($housemate as $row) : ?>
+                                    <div class="column">
+                                        <div class="card">
+                                            <div class="card-head">
+                                                <?php echo $row->nama_anggota; ?>
+                                            </div>
+                                            <div class="card-body">
+                                                <img src="<?php echo $row->url_fotoanggota; ?>" alt="Url Foto" class="img_anggota">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php }else{ ?>
+                                <div class="column">
+                                        <div class="card">
+                                            <div class="card-head">
+                                                Housemate
+                                            </div>
+                                            <div class="card-body">No Housemate yet</div>
+                                        </div>
+                                    </div>
+                            <?php } ?>
+                            
                         </div>
                     </div>
                     <div id="financeContainer" class="hide">
@@ -234,6 +256,13 @@
                         <div class="isi">
                             <h1>isi</h1>
                         </div>
+                    </div>
+                    <div id="modalPopUp" class="hide">
+                        <div class="modalAdd-header">
+                            <span id="closePopUp" class="close">&times;</span>
+                            <span id="modal-title">Title</span>
+                        </div>
+                        <div class="modalAdd-content" id="modalContent">Content</div>
                     </div>
                 </div>
             </div>
