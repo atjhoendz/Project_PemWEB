@@ -7,7 +7,11 @@ class Loginpage extends CI_Controller{
     }
 
     public function index(){
-        $this->load->view('loginpage');
+        if($this->session->logged_in){
+            $this->load->view('homepage');
+        }else{
+            $this->load->view('loginpage');
+        }
     }
     
     public function login(){
@@ -17,7 +21,17 @@ class Loginpage extends CI_Controller{
         if($uname != NULL && $pwd != NULL){
             $data = $this->login_model->cek_login('user', $uname, $pwd)->num_rows();
             if($data == 1){
+                $idRumah = $this->login_model->getRumahID($uname);
+                foreach ($idRumah as $row) {
+                    $id = $row->id_rumah;
+                }
                 echo "Login Berhasil...";
+                $newdata = array(
+                    'username' => $uname,
+                    'idRumah' => $id,
+                    'logged_in' => TRUE
+                );
+                $this->session->set_userdata($newdata);
             }else{
                 echo "Username or Password is Wrong...";
             }
