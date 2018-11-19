@@ -43,10 +43,4 @@ $(document).ready(function () {
         $('#txtUname').removeClass('border-red');
         $('#txtPwd').removeClass('border-red');
     });
-
-    $('window').on('click', function(event){
-        if(event.target == $('#modal')){
-            $('#modal').css({'display':'none'});
-        }
-    });
 });
