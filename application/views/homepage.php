@@ -240,21 +240,60 @@
                         </div>
                     </div>
                     <div id="financeContainer" class="hide">
-                        <div class="judul">
-                            <h1>Finance</h1>
-                        </div>
-                        <hr>
-                        <div class="isi">
-                            <h1>isi</h1>
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="headFinance">
+                                    <span class="txtLeft">Rp. Current Balance</span>
+                                    <span class="txtCenter">Finance</span>
+                                    <span class="btnOpsi fas fa-plus-circle"></span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Detail Transaksi</th>
+                                                <th>Tanggal</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Pembayaran Internet</td>
+                                                <td>20 November 2018</td>
+                                                <td>0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="taskContainer" class="hide">
-                        <div class="judul">
-                            <h1>Task</h1>
-                        </div>
-                        <hr>
-                        <div class="isi">
-                            <h1>isi</h1>
+                        <div class="card">
+                            <div class="card-head">
+                                <span class="btnOpsi far fa-edit"></span>
+                                <span class="btnOpsi fas fa-plus-circle"></span>
+                                TASK
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <tr>
+                                       <td>Task</td> 
+                                       <td class="userPic fas fa-user-circle"></td>
+                                       <td class="userPic fas fa-user-circle"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Task</td> 
+                                        <td class="userPic fas fa-user-circle"></td>
+                                        <td class="userPic fas fa-user-circle"></td>
+                                        <td class="userPic fas fa-user-circle"></td>
+                                     </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div id="modalPopUp" class="hide">
