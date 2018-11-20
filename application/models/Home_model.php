@@ -6,5 +6,9 @@
             $query = $this->db->get('anggota');
             return $query->result();
         }
+
+        function addHousemate_model($data_anggota){
+            $this->db->insert('anggota', $data_anggota);
+        }
     }
 ?>
