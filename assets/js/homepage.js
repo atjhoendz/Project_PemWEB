@@ -36,6 +36,9 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();    
+        }
     });
 
     // Sidebar Housemate Button
@@ -44,6 +47,10 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').removeClass('hide');
         $('#financeContainer').addClass('hide');
+
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();    
+        }
 
         // Get Housemate Data
         // $.ajax({
@@ -72,12 +79,58 @@ $(document).ready(function () {
         $('#modal-title').text('Add Housemate');
         $('#modalContent').html(
             '<form method="POST" class="formAdd">' +
-                '<input class="form-control" type="text" name="nama_anggota" id="nama-anggota" placeholder="Nama Anggota">'+
-                '<input class="form-control" type="text" name="url_foto" id="url-foto" placeholder="URL Foto">'+
-                '<input type="submit" class="btn" value="Add">'+
+                '<div class="form-group">'+
+                    '<input class="form-control" type="text" name="nama_anggota" id="nama-anggota" placeholder="Nama Anggota">' +
+                    '<input class="form-control" type="text" name="url_foto" id="url-foto" placeholder="URL Foto">' +
+                '</div>' +
+                '<div class="form-group">'+
+                    '<img id="previewImg" class="img_anggota" src="" alt="Image Url Invalid"></img>' +
+                '</div>' +
+                '<input id="btnAddHousemate" type="submit" class="btn" value="Add">'+
             '</form>'
         );
+        if($('#btnAddHousemate').length){
+            btnReady();
+        }else{
+            alert('not ready');
+        }
     });
+
+    function btnReady(){
+
+        $('#url-foto').change(function(){
+            $('#previewImg').attr('src', $(this).val());
+        });
+
+        $('#btnAddHousemate').on('click', function(e){
+            var name = $('#nama-anggota').val();
+            var url_foto = $('#url-foto').val();
+
+            if(name == '' || url_foto == ''){
+                alert('Empty Data');
+            }else{
+                var url = baseUrl + '/addHousemate';
+                $.post(url, {'nama_anggota':name, 'url_foto':url_foto},
+                    function (data){
+                        if(data == 'Success'){
+                            alert('Data Tersimpan');
+                            $('#closePopUp').click();
+                            location.reload();
+                            $('#housemateBtn').click();
+                        }else{
+                            alert(data);
+                        }
+                    }
+                );
+            }
+            e.preventDefault();
+        });
+
+        $('#btnEditHousemate').on('click', function(e){
+            alert('Edit');
+            e.preventDefault();
+        });
+    }
 
     // Edit Housemate
     $('#editHousemate').on('click', function(){
@@ -95,9 +148,14 @@ $(document).ready(function () {
                     '<input class="form-control" type="text" id="nama_anggota" placeholder="Nama Anggota">' +
                     '<input class="form-control" type="text" id="url_foto" placeholder="URL Foto">' +
                 '</div>' +
-                '<input type="submit" class="btn" value="Update">' +
+                '<input id="btnEditHousemate" type="submit" class="btn" value="Update">' +
             '</form>'
         );
+        if($('#btnEditHousemate').length){
+            btnReady();
+        }else{
+            alert('not ready');
+        }
     });
 
     // Close Modal
@@ -112,6 +170,9 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();    
+        }
     });
 
     // Sidebar Task Button
@@ -120,5 +181,8 @@ $(document).ready(function () {
         $('#mainContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();    
+        }
     });   
 });
