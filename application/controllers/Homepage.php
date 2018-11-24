@@ -32,8 +32,30 @@
                 'url_fotoanggota' => $url_foto
             );
 
-            $this->home_model->addHousemate_model($data_anggota);
-            echo 'Success';
+            if($this->home_model->addHousemate_model($data_anggota)){
+                echo 'Success';
+            }else{
+                echo 'Failed';
+            }
+        }
+
+        function updateHousemate(){
+            $id_anggota = $this->input->post('id_anggota');
+            $id_rumah = $this->session->idRumah;
+            $url_foto = $this->input->post('url_foto');
+            $nama_anggota = $this->input->post('nama_anggota');
+            $data_anggota = array(
+                'id_anggota' => $id_anggota,
+                'id_rumah' => $id_rumah,
+                'nama_anggota' => $nama_anggota,
+                'url_fotoanggota' => $url_foto
+            );
+
+            if($this->home_model->updateHousemate_model($data_anggota)){
+                echo 'Success';
+            }else{
+                echo 'Failed';
+            }
         }
 
         function logout(){
