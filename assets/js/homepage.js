@@ -4,6 +4,12 @@ $(document).ready(function () {
     var setTinggi = tinggifooter+'px';
     $('#main .container').css({"margin-bottom":setTinggi});
     
+    var dateInterval = setInterval(function(){
+        var momentNow = moment();
+        $('#txt-tanggal').html(momentNow.format('dddd, DD ') + momentNow.format('MMMM').substring(0, 3) + momentNow.format(' YYYY'));
+        $('#txt-jam').html(momentNow.format('HH:mm:ss'));
+    }, 1000);   
+
     //on window resize will set margin-bottom of mainContainer
     $(window).on('resize', function(){
         var win = $(this);
@@ -52,24 +58,6 @@ $(document).ready(function () {
             $('#sidebarCollapse').click();    
         }
 
-        // Get Housemate Data
-        // $.ajax({
-        //     type: "ajax",
-        //     url: baseUrl+"/getHousemate",
-        //     dataType: "json",
-        //     success: function (data) {
-        //         var len = data.length;
-        //         for(var i=0;i<len;i++){
-        //             $('#HousemateSubmenu').append(""+
-        //             "<li>"+
-        //                 "<a href='" + baseUrl + "anggota/"+ i + "'>"+
-        //                     "<i class='fas fa-user'></i>" +
-        //                     "<span>" + data[i].nama_anggota + "</span>" +
-        //                 "</a>" +
-        //             "</li>")
-        //         }
-        //     }
-        // });
     });
 
     // Add housemate
@@ -98,7 +86,7 @@ $(document).ready(function () {
 
     function btnReady(){
 
-        $('#url-foto').change(function(){
+        $('#url-foto').on('change paste keyup', function(){
             $('#previewImg').attr('src', $(this).val());
         });
 
@@ -126,8 +114,64 @@ $(document).ready(function () {
             e.preventDefault();
         });
 
+        var listAnggota = $('#list_housemate');
+        listAnggota.empty();
+        listAnggota.append('<option>Pilih Anggota</option>');
+        listAnggota.prop('selectedIndex', 0);
+
+        var url = baseUrl + '/getHousemate';
+        var dataAnggota = new Array();
+        $.getJSON(url, function (data) {
+                if(data == ''){
+                    listAnggota.html('<option disabled>No Anggota</option>');
+                }else{
+                    $.each(data, function (index, value) { 
+                        listAnggota.append($('<option></option>').attr('value', value.url_fotoanggota).text(value.nama_anggota));
+                        dataAnggota.push(value);
+                   });
+                }
+            }
+        );
+        
+        var idAnggota;
+        $('#list_housemate').change(function(){
+            var selectedAnggota = $('#list_housemate').find(':selected');
+            var namaAnggota = selectedAnggota.text();
+            var urlFoto = selectedAnggota.val();
+
+            for(var i=0;i<dataAnggota.length;i++){
+                if(dataAnggota[i].nama_anggota == namaAnggota){
+                    idAnggota = dataAnggota[i].id_anggota;
+                    break;
+                }
+            }
+
+            if(namaAnggota != 'Pilih Anggota'){
+                $('#nama_anggota').val(namaAnggota);
+                $('#url_foto').val(urlFoto);
+            }else{
+                $('#nama_anggota').val('');
+                $('#url_foto').val('');
+            }
+        });
+
         $('#btnEditHousemate').on('click', function(e){
-            alert('Edit');
+            var nama = $('#nama_anggota').val();
+            var urlFoto = $('#url_foto').val();
+
+            var url = baseUrl + '/updateHousemate';
+            $.post(url, {'nama_anggota':nama,'url_foto':urlFoto,'id_anggota':idAnggota},
+                function (data) {
+                    if(data == 'Success'){
+                        alert('Data Berhasil di Update');
+                        $('#closePopUp').click();
+                        location.reload();
+                        $('#housemateBtn').click();
+                    }else{
+                        alert(data);
+                    }
+                },
+            );  
             e.preventDefault();
         });
     }
@@ -141,7 +185,6 @@ $(document).ready(function () {
             '<form method="POST" class="formAdd">' +
                 '<div class="form-group">' +
                     '<select id="list_housemate" class="form-control select">' +
-                        '<option value="1">nama-anggota</option>' +
                     '</select>' +
                 '</div>' +
                 '<div class="form-group">' +
