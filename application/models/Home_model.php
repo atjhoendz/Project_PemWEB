@@ -8,7 +8,19 @@
         }
 
         function addHousemate_model($data_anggota){
-            $this->db->insert('anggota', $data_anggota);
+            if($this->db->insert('anggota', $data_anggota)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function updateHousemate_model($data_anggota){
+            if($this->db->replace('anggota', $data_anggota)){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 ?>
