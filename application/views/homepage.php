@@ -17,6 +17,7 @@
     <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
     <!-- Homepage JS -->
     <script src="<?php echo base_url('assets/js/homepage.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/moment.min.js');?>"></script>
 
 </head>
 <body>
@@ -142,6 +143,15 @@
                     <div id="mainContainer">
                         <div class="row">
                             <div class="column">
+                                <!-- <div class="card-circle"> -->
+                                    <!-- <div class="card-head-circle">Date</div> -->
+                                    <div class="card-body-circle">
+                                        <span id="txt-tanggal"></span>
+                                        <span id="txt-jam"></span>
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="column">
                                 <div class="card">
                                     <div class="card-head">
                                         Finance
@@ -169,12 +179,8 @@
                                     <div class="card-body">blablab</div>
                                 </div>
                             </div>
-                            <div class="column">
-                                <div class="card">
-                                    <div class="card-head">Finance</div>
-                                    <div class="card-body">blablab</div>
-                                </div>
-                            </div>
+                            
+
                         </div>
                         <div class="row">
                             <?php if(isset($housemate) || !empty($housemate)){
@@ -244,7 +250,6 @@
                             <div class="card-head">
                                 <div class="headFinance">
                                     <span class="txtLeft">Rp. Current Balance</span>
-                                    <span class="txtCenter">Finance</span>
                                     <span class="btnOpsi fas fa-plus-circle"></span>
                                 </div>
                             </div>
