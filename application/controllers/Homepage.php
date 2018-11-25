@@ -58,6 +58,18 @@
             }
         }
 
+        function deleteHousemate(){
+            $id = $this->input->post('id_anggota');
+            $id_anggota = array(
+                'id_anggota' => $id
+            );
+            if($this->home_model->deleteHousemate_model($id_anggota)){
+                echo 'Success';
+            }else{
+                echo 'Failed';
+            }
+        }
+
         function logout(){
             $this->session->sess_destroy();
             redirect(site_url());
