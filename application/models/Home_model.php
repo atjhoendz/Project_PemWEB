@@ -22,5 +22,13 @@
                 return false;
             }
         }
+
+        function deleteHousemate_model($id_anggota){
+            if($this->db->delete('anggota', $id_anggota)){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 ?>
