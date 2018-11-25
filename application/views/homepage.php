@@ -142,14 +142,11 @@
                 <div class="container">
                     <div id="mainContainer">
                         <div class="row">
-                            <div class="column">
-                                <!-- <div class="card-circle"> -->
-                                    <!-- <div class="card-head-circle">Date</div> -->
-                                    <div class="card-body-circle">
-                                        <span id="txt-tanggal"></span>
-                                        <span id="txt-jam"></span>
-                                    </div>
-                                <!-- </div> -->
+                            <div id="date-circle" class="column">
+                                <div class="card-body-circle">
+                                    <span id="txt-tanggal"></span>
+                                    <span id="txt-jam"></span>
+                                </div>
                             </div>
                             <div class="column">
                                 <div class="card">
