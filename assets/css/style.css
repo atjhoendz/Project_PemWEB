@@ -1,6 +1,6 @@
 body{
     background: url(../image/home2_blurred.jpg) no-repeat center center fixed;
-    content: '';
+    /* content: ''; */
     z-index: -1;
     width: 100%;
     height: 100%;
@@ -639,6 +639,11 @@ hr{
     #taskContainer{
         width: 100%;
     }
+
+    /* fix it on deploy */
+    /* body{
+        background: #90a4ae;        
+    } */
 }
 
 
