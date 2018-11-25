@@ -485,6 +485,35 @@ ul ul a {
     margin: 0 auto;
 }
 
+.modalAbout-header{
+    background-color: #90a4ae;
+    color: #fff;
+    border: 2px solid #90a4ae;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+    width: 50%;
+    margin: 5% auto 0;
+    padding: 15px;
+}
+
+.modalAbout-content{
+    background-color: #eeeeee;
+    color: #546e7a;
+    padding: 20px;
+    border: 2px solid #eeeeee;
+    border-radius: 0px 0px 5px 5px;
+    display: block;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.modalAbout-content a:hover,
+.modalAbout-content a:focus{
+    color: #000;
+    font-weight: bold;
+}
+
 .formAdd{
     width: 80%;
     margin: auto;
