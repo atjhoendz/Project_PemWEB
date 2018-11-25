@@ -3,6 +3,13 @@ $(document).ready(function () {
     var tinggifooter = $('#footer').height();
     var setTinggi = tinggifooter+'px';
     $('#main .container').css({"margin-bottom":setTinggi});
+    var win = $(window);
+    if(win.width() <= 768){
+        var tinggifooter = $('#footer').height();
+        var setTinggi = tinggifooter+'px';
+        $('#main .container').css({"margin-bottom":setTinggi});
+        $('#date-circle').hide();
+    }
     
     var dateInterval = setInterval(function(){
         var momentNow = moment();
@@ -17,6 +24,9 @@ $(document).ready(function () {
             var tinggifooter = $('#footer').height();
             var setTinggi = tinggifooter+'px';
             $('#main .container').css({"margin-bottom":setTinggi});
+            $('#date-circle').hide();
+        }else{
+            $('#date-circle').show();
         }
     });
 
@@ -95,7 +105,7 @@ $(document).ready(function () {
             var url_foto = $('#url-foto').val();
 
             if(name == '' || url_foto == ''){
-                alert('Empty Data');
+                alert('Masukan Data!');
             }else{
                 var url = baseUrl + '/addHousemate';
                 $.post(url, {'nama_anggota':name, 'url_foto':url_foto},
@@ -155,23 +165,51 @@ $(document).ready(function () {
             }
         });
 
-        $('#btnEditHousemate').on('click', function(e){
+        $('#btnUpdateHousemate').on('click', function(e){
             var nama = $('#nama_anggota').val();
             var urlFoto = $('#url_foto').val();
 
-            var url = baseUrl + '/updateHousemate';
-            $.post(url, {'nama_anggota':nama,'url_foto':urlFoto,'id_anggota':idAnggota},
-                function (data) {
-                    if(data == 'Success'){
-                        alert('Data Berhasil di Update');
-                        $('#closePopUp').click();
-                        location.reload();
-                        $('#housemateBtn').click();
-                    }else{
-                        alert(data);
+            if(nama == '' || urlFoto == ''){
+                alert('Tidak Ada data yang diupdate');
+            }else{
+                var url = baseUrl + '/updateHousemate';
+                $.post(url, {'nama_anggota':nama,'url_foto':urlFoto,'id_anggota':idAnggota},
+                    function (data) {
+                        if(data == 'Success'){
+                            alert('Data Berhasil di Update');
+                            $('#closePopUp').click();
+                            location.reload();
+                            $('#housemateBtn').click();
+                        }else{
+                            alert(data);
+                        }
+                    },
+                );  
+            }
+            e.preventDefault();
+        });
+
+        $('#btnDeleteHousemate').on('click', function(e){
+            var nama = $('#nama_anggota').val();
+            var urlFoto = $('#url_foto').val();
+
+            if(nama == '' || urlFoto == ''){
+                alert('Pilih Anggota yang akan dihapus.');
+            }else{
+                var url = baseUrl + '/deleteHousemate';
+                $.post(url, {'id_anggota' : idAnggota},
+                    function (data) {
+                        if(data == 'Success'){
+                            alert('Housemate ' + nama + ' berhasil dihapus.');
+                            $('#closePopUp').click();
+                            location.reload();
+                            $('#housemateBtn').click();
+                        }else{
+                            alert('Gagal Menghapus Housemate');
+                        }
                     }
-                },
-            );  
+                );
+            }            
             e.preventDefault();
         });
     }
@@ -191,10 +229,11 @@ $(document).ready(function () {
                     '<input class="form-control" type="text" id="nama_anggota" placeholder="Nama Anggota">' +
                     '<input class="form-control" type="text" id="url_foto" placeholder="URL Foto">' +
                 '</div>' +
-                '<input id="btnEditHousemate" type="submit" class="btn" value="Update">' +
+                '<input id="btnUpdateHousemate" type="submit" class="btn" value="Update">' +
+                '<input id="btnDeleteHousemate" type="submit" class="btn" value="Delete">' +
             '</form>'
         );
-        if($('#btnEditHousemate').length){
+        if($('#btnUpdateHousemate').length){
             btnReady();
         }else{
             alert('not ready');
