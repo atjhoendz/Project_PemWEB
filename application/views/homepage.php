@@ -111,7 +111,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a id="btnAbout">
                                 <i class="fas fa-info-circle"></i>
                                 About
                             </a>
@@ -299,7 +299,7 @@
                         </div>
                     </div>
                     <div id="modalPopUp" class="hide">
-                        <div class="modalAdd-header">
+                        <div class="modalAdd-header" id="modalHeader">
                             <span id="closePopUp" class="close">&times;</span>
                             <span id="modal-title">Title</span>
                         </div>
