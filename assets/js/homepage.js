@@ -289,5 +289,10 @@ $(document).ready(function () {
             '<h1>Contributor of This Project</h1>'+
             '<p><a href="https://github.com/atjhoendz" target="_blank">Mohamad Achun Armando (140810170020)</a> <br><a href="https://github.com/fish-irl" target="_blank">Hafizh Adwinsyah (140810170050)</a><br><a href="https://github.com/meone" target="_blank">Muhammad Fahmi Alwan (140810170052) </a><br><br> <h4>Teknik Informatika</h4><h5>Fakultas Matematika dan Ilmu Pengetahuan Alam</h5><h4>Universitas Padjadjaran</h4> <h2>{ Delphi 2017 }</h2></p>'
         );
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();
+            $('#modalHeader').css({'width':'90%'});
+            $('#modalContent').css({'width':'90%'});
+        }
     });
 });
