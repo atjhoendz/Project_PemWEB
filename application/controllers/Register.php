@@ -12,7 +12,7 @@ class Register extends CI_Controller{
         } else {
             $this->load->model('Register_model');
             $this->Register_model->register_akun();
-            $this->load->view('homepage');
+            $this->load->view('loginpage');
         }
     }
 }
