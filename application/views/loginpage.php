@@ -25,8 +25,7 @@
             <div class="row">
                 <div class="col-sm-8 bg-text">
                     <h1><strong>E-Home</strong></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestias mollitia eius dolorum maxime dignissimos quos hic impedit assumenda ab, alias porro corporis et consequuntur quam, temporibus laborum molestiae repudiandae!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas omnis inventore quidem voluptas repudiandae esse dolorem iusto numquam, aliquid ad eligendi dignissimos at, quae quod velit voluptate tenetur! Laborum, optio.</p>
+                    <p>E-Home adalah aplikasi berbasis web online gratis yang memiliki fungsi untuk mengatur suatu kondisi rumah. E-Home dapat mengatur segala pemasukan dan pengeluaran dari rumah anda serta mengatur segala kewajiban yang harus dilakukan oleh anggota rumah anda.</p>
                 </div>
                 <div class="col-sm-4 form-login-container">
                     <form method="post">
