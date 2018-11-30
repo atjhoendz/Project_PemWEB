@@ -286,8 +286,38 @@ $(document).ready(function () {
         $('#modalContent').addClass('modalAbout-content');
         $('#modal-title').text('About');
         $('#modalContent').html(
-            '<h1>Contributor of This Project</h1>'+
-            '<p><a href="https://github.com/atjhoendz" target="_blank">Mohamad Achun Armando (140810170020)</a> <br><a href="https://github.com/fish-irl" target="_blank">Hafizh Adwinsyah (140810170050)</a><br><a href="https://github.com/meone" target="_blank">Muhammad Fahmi Alwan (140810170052) </a><br><br> <h4>Teknik Informatika</h4><h5>Fakultas Matematika dan Ilmu Pengetahuan Alam</h5><h4>Universitas Padjadjaran</h4> <h2>{ Delphi 2017 }</h2></p>'
+            '<h2>Meet The Team</h2>'+
+            '<div class="identitas">'+
+                '<div class="contributor">'+
+                    '<img alt="achun" src="assets/image/acun.jpg" class="image">'+
+                    '<div class="middle">'+
+                        '<a href="https://github.com/atjhoendz" target="_blank">'+
+                            '<div class="text";">Moh Achun Armando</div>'+
+                        '</a>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="contributor">'+
+                    '<img alt="ikan" src="assets/image/ikan.jpg" class="image">'+
+                    '<div class="middle">'+
+                        '<a href="https://github.com/fish-irl" target="_blank">'+
+                            '<div class="text";">Hafizh Adwinsyah</div>'+
+                        '</a>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="contributor">'+
+                    '<img alt="miwan" src="assets/image/miwan.jpg" class="image">'+
+                    '<div class="middle">'+
+                        '<a href="https://github.com/MeOneIRL" target="_blank">'+
+                            '<div class="text";">Muhammad Fahmi Alwan</div>'+
+                        '</a>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+            '<br><br> <h4>Teknik Informatika</h4><h5>Fakultas Matematika dan Ilmu Pengetahuan Alam</h5><h4>Universitas Padjadjaran</h4> <h2>{ Delphi 2017 }</h2>'+
+            '<div class="modalAbout-footer">'+
+                '&copy Project Pemrograman Web 2018 | E-Work Corp.'+
+            '</div>'
+
         );
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();
