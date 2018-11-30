@@ -514,6 +514,15 @@ ul ul a {
     font-weight: bold;
 }
 
+.modalAbout-footer{
+    background-color: #90a4ae;
+    color: #fff;
+    border: 2px solid #90a4ae;
+    border-radius: 0px 0px 5px 5px;
+    text-align: center;
+    padding: 5px;
+  }
+
 .formAdd{
     width: 80%;
     margin: auto;
@@ -675,4 +684,44 @@ hr{
     } */
 }
 
+.contributor{
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+}
 
+.image {
+    opacity: 1;
+    display: block;
+    height: auto;
+    width: 194px;
+    height: 260px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .contributor:hover .image {
+    opacity: 0.3;
+  }
+  
+  .contributor:hover .middle {
+    opacity: 1;
+  }
+  
+  .text {
+    background-color: #90a4ae;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
