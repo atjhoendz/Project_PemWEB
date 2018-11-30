@@ -303,7 +303,7 @@
                             <span id="closePopUp" class="close">&times;</span>
                             <span id="modal-title">Title</span>
                         </div>
-                        <div class="modalAdd-content" id="modalContent">Content</div>
+                        <div class="modalAdd-content" id="modalContent">content</div>
                     </div>
                 </div>
             </div>
