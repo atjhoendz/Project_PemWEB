@@ -679,9 +679,9 @@ hr{
     }
 
     /* fix it on deploy */
-    /* body{
-        background: #90a4ae;        
-    } */
+    body{
+        background-size: auto;        
+    }
 }
 
 .contributor{

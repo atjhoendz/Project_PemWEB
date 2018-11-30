@@ -246,7 +246,17 @@
                         <div class="card">
                             <div class="card-head">
                                 <div class="headFinance">
-                                    <span class="txtLeft">Rp. Current Balance</span>
+                                    <span class="txtLeft"
+                                    <?php
+                                    foreach($balance as $data) :
+                                        if($data->balance < 0)
+                                            echo " style=\"color:red\">Rp ". $data->balance;    //TOLONG RAPIHIN
+                                        else
+                                            echo " style=\"color:green\">Rp ". $data->balance;
+                                        break;
+                                    endforeach;
+                                    ?>
+                                    </span>
                                     <span class="btnOpsi fas fa-plus-circle"></span>
                                 </div>
                             </div>
@@ -255,19 +265,30 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>No.</th>
                                                 <th>Detail Transaksi</th>
+                                                <th>Jumlah</th>
                                                 <th>Tanggal</th>
-                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Pembayaran Internet</td>
-                                                <td>20 November 2018</td>
-                                                <td>0</td>
-                                            </tr>
+                                            <?php if(isset($finance) || !empty($finance)){
+                                                $number = 1;
+                                                foreach($finance as $row) : ?>
+                                                    <tr>
+                                                        <td><?php echo $number++; ?></td>
+                                                        <td><?php echo $row->detail_transaksi; ?></td>
+                                                        <?php if ($row->flag==1) {
+                                                            echo "<td style=\"color:green\">Rp".$row->jumlah."</td>";
+                                                        } else {
+                                                            echo "<td style=\"color:red\">Rp".$row->jumlah."</td>";
+                                                        } ?>
+                                                        <td><?php echo $row->tanggal; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php } else { ?>
+                                                <tr><td colspan="4">No records yet!</td></tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
