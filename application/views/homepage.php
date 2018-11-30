@@ -246,7 +246,17 @@
                         <div class="card">
                             <div class="card-head">
                                 <div class="headFinance">
-                                    <span class="txtLeft">Rp Balance</span>
+                                    <span class="txtLeft"
+                                    <?php
+                                    foreach($balance as $data) :
+                                        if($data->balance < 0)
+                                            echo " style=\"color:red\">Rp ". $data->balance;    //TOLONG RAPIHIN
+                                        else
+                                            echo " style=\"color:green\">Rp ". $data->balance;
+                                        break;
+                                    endforeach;
+                                    ?>
+                                    </span>
                                     <span class="btnOpsi fas fa-plus-circle"></span>
                                 </div>
                             </div>
