@@ -246,7 +246,7 @@
                         <div class="card">
                             <div class="card-head">
                                 <div class="headFinance">
-                                    <span class="txtLeft">Rp. Current Balance</span>
+                                    <span class="txtLeft">Rp Balance</span>
                                     <span class="btnOpsi fas fa-plus-circle"></span>
                                 </div>
                             </div>
@@ -255,21 +255,25 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>No.</th>
                                                 <th>Detail Transaksi</th>
+                                                <th>Jumlah</th>
                                                 <th>Tanggal</th>
-                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php if(isset($finance) || !empty($finance)){
-                                                $id = 1;
+                                                $number = 1;
                                                 foreach($finance as $row) : ?>
                                                     <tr>
-                                                        <td><?php echo $id++; ?></td>
+                                                        <td><?php echo $number++; ?></td>
                                                         <td><?php echo $row->detail_transaksi; ?></td>
+                                                        <?php if ($row->flag==1) {
+                                                            echo "<td style=\"color:green\">Rp".$row->jumlah."</td>";
+                                                        } else {
+                                                            echo "<td style=\"color:red\">Rp".$row->jumlah."</td>";
+                                                        } ?>
                                                         <td><?php echo $row->tanggal; ?></td>
-                                                        <td><?php echo $row->status; ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php } else { ?>
