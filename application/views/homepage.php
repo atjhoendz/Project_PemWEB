@@ -262,12 +262,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Pembayaran Internet</td>
-                                                <td>20 November 2018</td>
-                                                <td>0</td>
-                                            </tr>
+                                            <?php if(isset($finance) || !empty($finance)){
+                                                $id = 1;
+                                                foreach($finance as $row) : ?>
+                                                    <tr>
+                                                        <td><?php echo $id++; ?></td>
+                                                        <td><?php echo $row->detail_transaksi; ?></td>
+                                                        <td><?php echo $row->tanggal; ?></td>
+                                                        <td><?php echo $row->status; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php } else { ?>
+                                                <tr><td colspan="4">No records yet!</td></tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
