@@ -33,7 +33,7 @@ class Loginpage extends CI_Controller{
                 );
                 $this->session->set_userdata($newdata);
             }else{
-                echo "Username or Password is Wrong...";
+                echo "Username or Password is INVALID...";
             }
         }
     }
