@@ -246,18 +246,8 @@
                         <div class="card">
                             <div class="card-head">
                                 <div class="headFinance">
-                                    <span class="txtLeft"
-                                    <?php
-                                    foreach($balance as $data) :
-                                        if($data->balance < 0)
-                                            echo " style=\"color:red\">Rp ". $data->balance;    //TOLONG RAPIHIN
-                                        else
-                                            echo " style=\"color:green\">Rp ". $data->balance;
-                                        break;
-                                    endforeach;
-                                    ?>
-                                    </span>
-                                    <span class="btnOpsi fas fa-plus-circle"></span>
+                                    <span class="txtLeft" id="txtBalance">Rp</span>
+                                    <span id="addFinance" class="btnOpsi fas fa-plus-circle"></span>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -279,9 +269,9 @@
                                                         <td><?php echo $number++; ?></td>
                                                         <td><?php echo $row->detail_transaksi; ?></td>
                                                         <?php if ($row->flag==1) {
-                                                            echo "<td style=\"color:green\">Rp".$row->jumlah."</td>";
+                                                            echo "<td class='txtIncome'>Rp".$row->jumlah."</td>";
                                                         } else {
-                                                            echo "<td style=\"color:red\">Rp".$row->jumlah."</td>";
+                                                            echo "<td class='txtExpenses'>Rp".$row->jumlah."</td>";
                                                         } ?>
                                                         <td><?php echo $row->tanggal; ?></td>
                                                     </tr>
@@ -290,6 +280,7 @@
                                                 <tr><td colspan="4">No records yet!</td></tr>
                                             <?php } ?>
                                         </tbody>
+                                        <span class="small right"><span class="txtIncome">Income</span>|<span class="txtExpenses">Expenses</span></span>
                                     </table>
                                 </div>
                             </div>
@@ -324,7 +315,10 @@
                             <span id="closePopUp" class="close">&times;</span>
                             <span id="modal-title">Title</span>
                         </div>
-                        <div class="modalAdd-content" id="modalContent">content</div>
+                        <div class="modalAdd-content" id="modalContent">
+                            Content
+                        </div>
+                        <div class="modalAbout-footer hide" id="modalFooter">Footer</div>
                     </div>
                 </div>
             </div>
