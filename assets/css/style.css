@@ -1,6 +1,5 @@
 body{
     background: url(../image/home2_blurred.jpg) no-repeat center center fixed;
-    /* content: ''; */
     z-index: -1;
     width: 100%;
     height: 100%;
@@ -33,7 +32,7 @@ body{
     background-color: rgba(0,0,0, 0.2); 
     color: white;
     font-weight: bold;
-    border: 1.5px solid #ffffff;
+    border: 1.5px solid #fff;
     border-radius: 10px;
     padding: 5px;
     text-align: center;
@@ -78,7 +77,7 @@ input[type=submit]{
 
 .register-text {
     text-align: center;
-    color: white;
+    color: #383c5e;
     font-weight: bold;
 }
 
@@ -113,7 +112,7 @@ form > a:hover{
 }
 
 .modal-content{
-    background: #90a4ae;
+    background: #272848;
     display: block;
     margin: 15% auto;
     padding: 20px;
@@ -124,7 +123,7 @@ form > a:hover{
 }
 
 .close{
-    color: #fff;
+    color: #D2DCEE;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -132,7 +131,7 @@ form > a:hover{
 
 .close:hover,
 .close:focus{
-    color: black;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -195,7 +194,7 @@ a:focus {
     left: 0;
     height: 100vh;
     z-index: 998;
-    background: #eeeeee;
+    background: #D2DCEE;
     color: #fff;
     transition: all 0.3s;
     overflow: auto;
@@ -207,13 +206,13 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #90a4ae;
+    background: #64668B;
     height: 20%;
     margin: auto;
 }
 
 #sidebar .sidebar-footer{
-    background-color: #78909c;
+    background-color: #383c5e;
     position: absolute;
     bottom: 0;
     margin: 0;
@@ -226,7 +225,7 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    background: #78909c;
+    background: #383c5e;
 }
 
 #sidebar ul p {
@@ -241,14 +240,14 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #546e7a;
-    background: #fff;
+    color: #383c5e;
+    background: #D2DCEE;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #607d8b;
+    background: #272848;
 }
 
 a[data-toggle="collapse"] {
@@ -294,16 +293,17 @@ ul ul a {
 }
 
 .btn{
-    background-color:#90a4ae;
+    background-color:#64668B;
     color: #fff;
 }
 
 .btn:hover{
-    background-color: #78909c;
+    background-color: #272848;
+    color: #fff;
 }
 
 .navbar{
-    border: 2px solid #78909c;
+    border: 2px solid #272848;
     border-radius: 3px;
     z-index: 1;
     position: sticky;
@@ -367,7 +367,7 @@ ul ul a {
 #main .card-head{
     height: 40px;
     width: inherit;
-    background-color: #78909c;
+    background-color: #272848;
     border-radius: 10px 10px 0px 0px;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -380,7 +380,7 @@ ul ul a {
     padding: 16px;
     text-align: center;
     background-color: #eeeeee;
-    color: #546e7a;
+    color: #272848;
     height: auto;
     border-radius: 0px 0px 10px 10px;
 }
@@ -393,7 +393,7 @@ ul ul a {
 #main .card-head-circle{
     height: 40px;
     width: inherit;
-    background-color: #78909c;
+    background-color: #272848;
     border-radius: 50% 50% 0px 0px;
     text-align: center;
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
@@ -406,11 +406,11 @@ ul ul a {
     display: table-cell;
     text-align: center;
     background-color: #eeeeee;
-    color: #546e7a;
+    color: #272848;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 5px solid #78909c;
+    border: 5px solid #272848;
     vertical-align: middle;
 }
 
@@ -440,7 +440,16 @@ ul ul a {
 }
 
 #housemateContainer a:hover{
-    color: #000;
+    color: #fff;
+    background-color: #272848;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
 }
 
 .img_anggota{
@@ -463,9 +472,9 @@ ul ul a {
 }
 
 .modalAdd-header{
-    background-color: #90a4ae;
+    background-color: #272848;
     color: #fff;
-    border: 2px solid #90a4ae;
+    border: 2px solid #272848;
     border-radius: 5px 5px 0px 0px;
     text-align: center;
     width: 50%;
@@ -486,22 +495,20 @@ ul ul a {
 }
 
 .modalAbout-header{
-    background-color: #90a4ae;
+    background-color: #272848;
     color: #fff;
-    border: 2px solid #90a4ae;
+    border: 2px solid #272848;
     border-radius: 5px 5px 0px 0px;
     text-align: center;
     width: 50%;
-    margin: 5% auto 0;
+    margin: 1% auto 0;
     padding: 15px;
 }
 
 .modalAbout-content{
     background-color: #eeeeee;
-    color: #546e7a;
+    color: #272848;
     padding: 20px;
-    border: 2px solid #eeeeee;
-    border-radius: 0px 0px 5px 5px;
     display: block;
     text-align: center;
     width: 50%;
@@ -515,13 +522,20 @@ ul ul a {
 }
 
 .modalAbout-footer{
-    background-color: #90a4ae;
+    background-color: #272848;
     color: #fff;
-    border: 2px solid #90a4ae;
+    border: 2px solid #272848;
     border-radius: 0px 0px 5px 5px;
     text-align: center;
+    width: 50%;
+    margin: 0 auto 1%;
     padding: 5px;
-  }
+}
+
+.modalAbout-footer table{
+    width: 100%;
+    text-align: center;
+}
 
 .formAdd{
     width: 80%;
@@ -566,13 +580,14 @@ ul ul a {
 
 .btnOpsi:hover, 
 .btnOpsi:focus{
-    color: #000;
+    color: #272848;
     text-decoration: none;
+    background-color: #D2DCEE;
 }
 
 .userPic{
     float: right;
-    color: #546e7a;
+    color: #272848;
     font-size: 30px;
     font-weight: bold;
 }
@@ -598,14 +613,6 @@ ul ul a {
     text-align: center;
 }
 
-hr{
-    background-color: #fff;
-    height: 3px;
-    border: none;
-    border-radius: 2px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
 .hide{
     display: none; 
 }
@@ -627,6 +634,121 @@ hr{
 
 .menu-icon {
     width: 30px;
+}
+
+.contributor{
+    display: inline-block;
+    position: relative;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    height: auto;
+    /* width: 194px; */
+    max-width: 187px;
+    max-height: 253px;
+    /* height: 260px; */
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+  
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+  
+.contributor:hover .image {
+    opacity: 0.3;
+}
+  
+.contributor:hover .middle {
+    opacity: 1;
+}
+  
+.text {
+    background-color: #272848;
+    color: #fff;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 20px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: green;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 0;
+    bottom: -1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: red;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px red;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 20px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.txtIncome{
+    margin-right: 10px;
+    color: green;
+    font-weight: 500;
+}
+
+.txtExpenses{
+    margin-left: 10px;
+    color: red;
+    font-weight: 500;
 }
 
 /* media queries */
@@ -655,11 +777,15 @@ hr{
     }
 
     .modalAdd-content{
-        width: 80%;
+        width: 90%;
     }
 
     .modalAdd-header{
-        width: 80%;
+        width: 90%;
+    }
+
+    .modalAbout-footer{
+        width: 90%;
     }
 
     #addHousemate{
@@ -684,44 +810,6 @@ hr{
     }
 }
 
-.contributor{
-    display: inline-block;
-    position: relative;
-    padding: 5px;
-}
 
-.image {
-    opacity: 1;
-    display: block;
-    height: auto;
-    width: 194px;
-    height: 260px;
-    transition: .5s ease;
-    backface-visibility: hidden;
-  }
+
   
-  .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  .contributor:hover .image {
-    opacity: 0.3;
-  }
-  
-  .contributor:hover .middle {
-    opacity: 1;
-  }
-  
-  .text {
-    background-color: #90a4ae;
-    color: white;
-    font-size: 16px;
-    padding: 16px 32px;
-  }
