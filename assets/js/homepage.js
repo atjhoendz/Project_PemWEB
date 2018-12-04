@@ -91,6 +91,7 @@ $(document).ready(function () {
                 '<input id="btnAddHousemate" type="submit" class="btn" value="Add">'+
             '</form>'
         );
+        $('#modalFooter').addClass('hide');
         if($('#btnAddHousemate').length){
             btnReady();
         }else{
@@ -216,6 +217,59 @@ $(document).ready(function () {
             }            
             e.preventDefault();
         });
+
+        $('#btnAddFinance').on('click', function(e){
+            var status = '1';
+            if($('#statusFinance input:checked').length){
+                status = '0';
+            }else{
+                status = '1';
+            }
+            var detail = $('#detailTransaksi').val();
+            var jml = $('#jmlTransaksi').val();
+            var tgl = $('#tglTransaksi').val();
+            
+            if(detail == '' || jml == '' || tgl == ''){
+                alert("Semua Form Finance Wajib DIISI!");
+            }else{
+                var url = baseUrl + '/addFinance';
+                $.post(url, {'detailTrans':detail, 'jmlTrans':jml, 'tglTrans':tgl, 'statusTrans':status},
+                    function (data) {
+                        if(data == 'Success'){
+                            alert('Finance berhasil ditambahkan');
+                            $('#closePopUp').click();
+                            location.reload();
+                        }else{
+                            alert(data);
+                        } 
+                    }
+                );
+            }
+
+            e.preventDefault();
+        });
+    }
+
+    // Get & Set Finance Balance
+
+    function GetSetBalance(){
+        var url = baseUrl + '/getBalanceJSON';
+        var bal;
+        $.getJSON(url, function (data) {
+                if(data != ''){
+                    $.each(data, function (index, value) { 
+                         bal = value.balance; 
+                    });
+                    if(bal < 0){
+                        $('#txtBalance').css({'color':'red'});
+                        $('#txtBalance').text('Rp' + bal);
+                    }else{
+                        $('#txtBalance').css({'color':'lightgreen'});
+                        $('#txtBalance').text('Rp' + bal);
+                    }
+                }
+            }
+        );
     }
 
     // Edit Housemate
@@ -241,6 +295,7 @@ $(document).ready(function () {
                 '<input id="btnDeleteHousemate" type="submit" class="btn" value="Delete">' +
             '</form>'
         );
+        $('#modalFooter').addClass('hide');
         if($('#btnUpdateHousemate').length){
             btnReady();
         }else{
@@ -260,6 +315,7 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        GetSetBalance();
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();    
         }
@@ -286,43 +342,89 @@ $(document).ready(function () {
         $('#modalContent').addClass('modalAbout-content');
         $('#modal-title').text('About');
         $('#modalContent').html(
-            '<h2>Meet The Team</h2>'+
-            '<div class="identitas">'+
-                '<div class="contributor">'+
-                    '<img alt="achun" src="assets/image/acun.jpg" class="image">'+
-                    '<div class="middle">'+
-                        '<a href="https://github.com/atjhoendz" target="_blank">'+
-                            '<div class="text";">Moh Achun Armando</div>'+
-                        '</a>'+
-                    '</div>'+
-                '</div>'+
-                '<div class="contributor">'+
-                    '<img alt="ikan" src="assets/image/ikan.jpg" class="image">'+
-                    '<div class="middle">'+
-                        '<a href="https://github.com/fish-irl" target="_blank">'+
-                            '<div class="text";">Hafizh Adwinsyah</div>'+
-                        '</a>'+
-                    '</div>'+
-                '</div>'+
-                '<div class="contributor">'+
-                    '<img alt="miwan" src="assets/image/miwan.jpg" class="image">'+
-                    '<div class="middle">'+
-                        '<a href="https://github.com/MeOneIRL" target="_blank">'+
-                            '<div class="text";">Muhammad Fahmi Alwan</div>'+
-                        '</a>'+
-                    '</div>'+
-                '</div>'+
-            '</div>'+
-            '<br><br> <h4>Teknik Informatika</h4><h5>Fakultas Matematika dan Ilmu Pengetahuan Alam</h5><h4>Universitas Padjadjaran</h4> <h2>{ Delphi 2017 }</h2>'+
-            '<div class="modalAbout-footer">'+
-                '&copy Project Pemrograman Web 2018 | E-Work Corp.'+
-            '</div>'
-
+            '<h2>Meet The Team</h2>' +
+            '<table class="table table-borderless table-responsive text-center">'+
+                '<tr>'+
+                    '<td>' +
+                        '<div class="contributor">' +
+                            '<img alt="achun" src="assets/image/acun.jpg" class="image">' +
+                            '<div class="middle">'+
+                                '<a href="https://github.com/atjhoendz" target="_blank">' +
+                                    '<div class="text";">Moh Achun Armando</div>' +
+                                '</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</td>' +
+                    '<td>' +
+                        '<div class="contributor">' +
+                            '<img alt="ikan" src="assets/image/ikan.jpg" class="image">' +
+                            '<div class="middle">' +
+                                '<a href="https://github.com/fish-irl" target="_blank">' +
+                                    '<div class="text";">Hafizh Adwinsyah</div>' +
+                                '</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</td>' +
+                    '<td>' +
+                        '<div class="contributor">' +
+                            '<img alt="miwan" src="assets/image/miwan.jpg" class="image">' +
+                            '<div class="middle">' +
+                                '<a href="https://github.com/MeOneIRL" target="_blank">' +
+                                    '<div class="text";">Muhammad Fahmi Alwan</div>' +
+                                '</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</td>' +
+                '</tr>' +
+            '</table>' +
+            '<h4>Teknik Informatika</h4><h5>Fakultas Matematika dan Ilmu Pengetahuan Alam</h5><h4>Universitas Padjadjaran</h4> <h2>{ Delphi 2017 }</h2>'
         );
+        $('#modalFooter').removeClass('hide');
+        $('#modalFooter').html(
+            '&copy Project Pemrograman Web 2018 | E-Work Corp.'
+        );
+
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();
             $('#modalHeader').css({'width':'90%'});
             $('#modalContent').css({'width':'90%'});
         }
     });
-});
+
+    $('#addFinance').on('click', function(){
+        $('#modalPopUp').removeClass('hide');
+        $('#modalPopUp').addClass('modalAdd-container');
+        $('#modalHeader').removeClass('modalAdd-header');
+        $('#modalHeader').addClass('modalAdd-header');
+        $('#modalContent').removeClass('modalAdd-content');
+        $('#modalContent').addClass('modalAdd-content');
+        $('#modal-title').text('Add Finance');
+        $('#modalContent').html(
+            '<form class="formAdd" method="POST">'+
+            '	<div class="form-group">'+
+            '    	<input type="text" name="detailTrans" id="detailTransaksi" class="form-control" placeholder="Masukan Detail Transaksi">'+
+            '        <input type="number" name="jmlTrans" id="jmlTransaksi" class="form-control" placeholder="Masukan Jumlah Uang">'+
+            '        <input type="date" name="tglTrans" id="tglTransaksi" class="form-control" placeholder="Masukan Tanggal Transaksi">'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '        <span class="txtIncome">Pemasukan</span>'+
+            '        <label class="switch" id="statusFinance">'+
+            '            <input type="checkbox">'+
+            '        	<span class="slider round"></span>'+
+            '        </label>'+
+            '        <span class="txtExpenses">Pengeluaran</span>'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '        <input type="submit" class="btn" value="Add" id="btnAddFinance">'+
+            '    </div>'+
+            '</form>'
+        );
+        
+        $('#modalFooter').addClass('hide');
+        if($('#btnAddFinance').length){
+            btnReady();
+        }else{
+            alert('not ready');
+        }
+    })
+});;
