@@ -24,11 +24,13 @@
         public function getBalance(){
             $idRumah = $this->session->idRumah;
             $query = $this->db->query("SELECT (
-                (SELECT SUM(jumlah) FROM keuangan WHERE flag=1 && id_rumah='".$idRumah."')
-                - (SELECT SUM(jumlah) FROM keuangan WHERE flag=0 && id_rumah='".$idRumah."')) AS balance
-            FROM keuangan;");
-            
+                (SELECT SUM(jumlah) FROM keuangan WHERE flag=1 AND id_rumah='".$idRumah."')
+                - (SELECT SUM(jumlah) FROM keuangan WHERE flag=0 AND id_rumah='".$idRumah."')) AS balance FROM keuangan LIMIT 1;");
             return $query->result();
+        }
+
+        public function addFinance_model($data_finance){
+            return $this->db->insert('keuangan', $data_finance);
         }
     }
 ?>
