@@ -20,6 +20,10 @@
             }
         }
 
+        function getBalanceJSON(){
+            echo json_encode($this->Finance_model->getBalance());
+        }
+
         function getHousemate(){
             echo json_encode($this->home_model->getHousemate_Model());
         }
@@ -72,6 +76,28 @@
                 echo 'Success';
             }else{
                 echo 'Failed';
+            }
+        }
+
+        function addFinance(){
+            $id_rumah = $this->session->idRumah;
+            $detail = $this->input->post('detailTrans');
+            $jml = $this->input->post('jmlTrans');
+            $tgl = $this->input->post('tglTrans');
+            $status = $this->input->post('statusTrans');
+
+            $data_finance = array(
+                'id_rumah' => $id_rumah,
+                'detail_transaksi' => $detail,
+                'jumlah' => $jml,
+                'flag' => $status,
+                'tanggal' => $tgl
+            );
+            
+            if($this->Finance_model->addFinance_model($data_finance)){
+                echo 'Success';
+            }else{
+                echo 'Gagal Menambahkan Data';
             }
         }
 
