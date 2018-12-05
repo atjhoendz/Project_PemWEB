@@ -376,6 +376,14 @@ ul ul a {
     font-weight: bold;
 }
 
+#main .card:hover > .card-head{
+    background-color: #383c5e;
+}
+
+#main .card-body-circle:hover{
+    border-color: #383c5e;
+}
+
 #main .card-body{
     padding: 16px;
     text-align: center;
@@ -383,23 +391,6 @@ ul ul a {
     color: #272848;
     height: auto;
     border-radius: 0px 0px 10px 10px;
-}
-
-#main .card-circle{
-    /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
-    display: table-cell;    
-}
-
-#main .card-head-circle{
-    height: 40px;
-    width: inherit;
-    background-color: #272848;
-    border-radius: 50% 50% 0px 0px;
-    text-align: center;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-    padding-top: 5px;
-    color: white;
-    font-weight: bold;
 }
 
 #main .card-body-circle{
@@ -450,6 +441,15 @@ ul ul a {
 
 .left{
     float: left;
+}
+
+.Menuicon{
+    font-size: 40px;
+    color: #272848;
+}
+
+.Menuicon:hover{
+    color: #383c5e;
 }
 
 .img_anggota{
@@ -580,21 +580,20 @@ ul ul a {
 
 .btnOpsi:hover, 
 .btnOpsi:focus{
-    color: #272848;
+    color: cyan;
     text-decoration: none;
-    background-color: #D2DCEE;
 }
 
 .userPic{
-    float: right;
     color: #272848;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 20px;
 }
 
 .userPic:hover,
 .userPic:focus{
     color: #000;
+    font-size: 21px;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -751,6 +750,14 @@ input:checked + .slider:before {
     font-weight: 500;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
+.centerVertical{
+    margin: auto;
+}
+
 /* media queries */
 
 @media (max-width: 768px) {
@@ -809,7 +816,3 @@ input:checked + .slider:before {
         background-size: auto;        
     }
 }
-
-
-
-  
