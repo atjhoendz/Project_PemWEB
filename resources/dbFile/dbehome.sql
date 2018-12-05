@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 12:50 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Host: localhost
+-- Generation Time: Dec 06, 2018 at 02:09 AM
+-- Server version: 10.1.37-MariaDB-1
+-- PHP Version: 7.2.9-1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbehome`
 --
-CREATE DATABASE IF NOT EXISTS `dbehome` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dbehome`;
 
 -- --------------------------------------------------------
 
@@ -42,7 +40,12 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`id_anggota`, `id_rumah`, `nama_anggota`, `url_fotoanggota`) VALUES
-('Fis50', 'fis36', 'Fish', 'https://cdn.shopify.com/s/files/1/0250/3642/collections/Tasty.Sushi_grande.jpg?v=1486936319');
+('Ari90', 'adm83', 'Arif R Gilang', 'http://hda.himatif.org/assets/foto/2017/30.jpg'),
+('Fis50', 'fis36', 'Fish', 'https://cdn.shopify.com/s/files/1/0250/3642/collections/Tasty.Sushi_grande.jpg?v=1486936319'),
+('Imr76', 'adm83', 'Imron Madani', 'http://hda.himatif.org/assets/foto/2017/61.jpg'),
+('M H7', 'adm83', 'M HafidzAlfarizi', 'http://hda.himatif.org/assets/foto/2017/22.jpg'),
+('Moh8', 'adm83', 'Moh Achun Armando', 'http://localhost/TugasPW/pw-archive/Profile+Bootstrap/assets/foto-me.png'),
+('Muh63', 'adm83', 'Muh Fahmi Alwan', 'http://hda.himatif.org/assets/foto/2017/52.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,7 +68,14 @@ CREATE TABLE `keuangan` (
 
 INSERT INTO `keuangan` (`id_transaksi`, `id_rumah`, `detail_transaksi`, `jumlah`, `flag`, `tanggal`) VALUES
 (1, 'fis36', 'Melewati Start', 300000, 1, '2018-10-17'),
-(3, 'fis36', 'Beli landmark', 5000000, 0, '2018-09-19');
+(3, 'fis36', 'Beli landmark', 5000000, 0, '2018-09-19'),
+(4, 'adm83', 'aeaerae', 1000000, 1, '2018-12-14'),
+(5, 'adm83', 'Bayar Wifi', 300000, 0, '2018-12-05'),
+(6, 'adm83', 'Iuran Tahunan', 500000, 1, '2018-12-20'),
+(7, 'adm83', 'Iuran Tahunan', 1000000, 1, '2018-12-13'),
+(8, 'adm83', 'Bayar pompa aer', 2000000, 0, '2018-12-14'),
+(9, 'adm83', 'bayar ifest', 1000000, 0, '2018-12-12'),
+(10, 'adm83', 'Uang Bulanan', 100000, 1, '2018-12-13');
 
 -- --------------------------------------------------------
 
@@ -85,6 +95,8 @@ CREATE TABLE `rumah` (
 --
 
 INSERT INTO `rumah` (`id_rumah`, `nama_rumah`, `alamat`, `url_foto`) VALUES
+('adm83', '', '', ''),
+('atj81', '', '', ''),
 ('fis36', 'Fisheries', 'Atlantic Ocean 248th Reef 2nd District', '');
 
 -- --------------------------------------------------------
@@ -96,8 +108,21 @@ INSERT INTO `rumah` (`id_rumah`, `nama_rumah`, `alamat`, `url_foto`) VALUES
 CREATE TABLE `task` (
   `id_task` varchar(5) NOT NULL,
   `id_anggota` varchar(5) DEFAULT NULL,
-  `nama_task` varchar(100) DEFAULT NULL
+  `id_rumah` varchar(5) NOT NULL,
+  `nama_task` varchar(100) DEFAULT NULL,
+  `nama_anggota` varchar(100) NOT NULL,
+  `tgl_task` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `task`
+--
+
+INSERT INTO `task` (`id_task`, `id_anggota`, `id_rumah`, `nama_task`, `nama_anggota`, `tgl_task`) VALUES
+('Bay45', 'Muh63', 'adm83', 'Bayar Satpam', 'Muh Fahmi Alwan', '2018-12-15'),
+('Bel61', 'Imr76', 'adm83', 'Beli Token Listrik', 'Imron Madani', '2018-12-07'),
+('Bel63', 'Moh8', 'adm83', 'Beli Galon', 'Moh Achun Armando', '2018-12-07'),
+('tsk01', 'Ari90', 'adm83', 'Bayar Wifi', 'Arif R Gilang', '2018-12-12');
 
 -- --------------------------------------------------------
 
@@ -118,7 +143,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_rumah`, `username`, `password`, `email`, `kontak`) VALUES
-('fis36', 'fish', 'fish', 'fish@atlanticocean.com', '085262399545');
+('fis36', 'fish', 'fish', 'fish@atlanticocean.com', '085262399545'),
+('adm83', 'admin', 'admin', 'achunarmando@gmail.com', '089646596302'),
+('atj81', 'atjhoendz', '123', 'achunarmando@gmail.com', '123456');
 
 --
 -- Indexes for dumped tables
@@ -148,7 +175,8 @@ ALTER TABLE `rumah`
 --
 ALTER TABLE `task`
   ADD PRIMARY KEY (`id_task`),
-  ADD KEY `id_anggota` (`id_anggota`);
+  ADD KEY `id_anggota` (`id_anggota`),
+  ADD KEY `id_rumah` (`id_rumah`);
 
 --
 -- Indexes for table `user`
@@ -164,7 +192,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `keuangan`
 --
 ALTER TABLE `keuangan`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
