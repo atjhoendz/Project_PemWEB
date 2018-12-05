@@ -8,7 +8,7 @@ class Loginpage extends CI_Controller{
 
     public function index(){
         if($this->session->logged_in){
-            $this->load->view('homepage');
+            redirect(site_url('homepage'));
         }else{
             $this->load->view('loginpage');
         }
