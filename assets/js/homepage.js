@@ -98,7 +98,7 @@ $(document).ready(function () {
             alert('not ready');
         }
     });
-
+    var selectedAnggotaTask;
     function btnReady(){
 
         $('#url-foto').on('change paste keyup', function(){
@@ -130,23 +130,37 @@ $(document).ready(function () {
         });
 
         var listAnggota = $('#list_housemate');
+        var listTaskAnggota = $('#listTaskAnggota');
+        var listTaskAddAnggota = $('#listTaskAddAnggota');
         listAnggota.empty();
+        listTaskAnggota.empty();
+        listTaskAddAnggota.empty();
         listAnggota.append('<option>Pilih Anggota</option>');
+        listTaskAnggota.append('<option>Pilih Anggota</option>');
+        listTaskAddAnggota.append('<option>Pilih Anggota</option>');
         listAnggota.prop('selectedIndex', 0);
+        listTaskAnggota.prop('selectedIndex', 0);
+        listTaskAddAnggota.prop('selectedIndex', 0);
 
         var url = baseUrl + '/getHousemate';
         var dataAnggota = new Array();
         $.getJSON(url, function (data) {
                 if(data == ''){
                     listAnggota.html('<option disabled>No Anggota</option>');
+                    listTaskAnggota.html('<option disabled>No Anggota</option>');
+                    listTaskAddAnggota.html('<option disabled>No Anggota</option>');
                 }else{
                     $.each(data, function (index, value) { 
                         listAnggota.append($('<option></option>').attr('value', value.url_fotoanggota).text(value.nama_anggota));
+                        listTaskAnggota.append($('<option></option>').attr('value', value.id_anggota).text(value.nama_anggota));
+                        listTaskAddAnggota.append($('<option></option>').attr('value', value.id_anggota).text(value.nama_anggota));
                         dataAnggota.push(value);
                    });
                 }
             }
         );
+
+        
         
         var idAnggota;
         $('#list_housemate').change(function(){
@@ -246,6 +260,38 @@ $(document).ready(function () {
                 );
             }
 
+            e.preventDefault();
+        });
+
+        $('#btnAddTask').on('click', function(e){
+            var taskDetail = $('#txtTaskAddDetail').val();
+            var tglDeadline = $('#deadlineAddTask').val();
+            var id_anggota = $('#listTaskAddAnggota').val();
+            var nama_anggota = $('#listTaskAddAnggota').find(':selected').text();
+            var url = baseUrl + '/addTask';
+            $.post(url, {'idAnggota':id_anggota, 'taskDetail':taskDetail, 'namaAnggota':nama_anggota, 'deadlineTask':tglDeadline},
+                function (data) {
+                    if(data == 'Success'){
+                        alert('Task Berhasil Ditambahkan');
+                        location.reload();
+                        $window.onload = $('#homeTask').click();
+                    }else{
+                        alert(data);
+                    }
+                }
+            );
+            e.preventDefault();
+        });
+
+        // $('#listTaskAnggota option[value="Imr76"]').attr('selected', true);
+        // $('#listTaskAnggota').val('Imr76').trigger('change');
+        // alert(selectedAnggotaTask);
+
+        $('#btnDeleteTask').on('click', function(e){
+            e.preventDefault();
+        })
+
+        $('#btnUpdateTask').on('click', function(e){
             e.preventDefault();
         });
     }
@@ -426,5 +472,117 @@ $(document).ready(function () {
         }else{
             alert('not ready');
         }
-    })
+    });
+
+    $('#addTask').on('click', function(){
+        $('#modalPopUp').removeClass('hide');
+        $('#modalPopUp').addClass('modalAdd-container');
+        $('#modalHeader').removeClass('modalAdd-header');
+        $('#modalHeader').addClass('modalAdd-header');
+        $('#modalContent').removeClass('modalAdd-content');
+        $('#modalContent').addClass('modalAdd-content');
+        $('#modal-title').text('Add Task');
+        $('#modalContent').html(
+            '<form class="formAdd" method="post">'+
+            '	<div class="form-group">'+
+            '        <input type="text" class="form-control" name="txtAddTask" id="txtTaskAddDetail" placeholder="Task Detail">'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '    	<small class="left select">Deadline</small>'+
+            '        <input type="date" name="tglAddTask" id="deadlineAddTask" class="form-control">'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '        <select class="form-control select" name="listAddAnggota" id="listTaskAddAnggota">'+
+            '            <option>Pilih Anggota</option>'+
+            '        </select>'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '	    <input type="submit" class="btn" value="Add" id="btnAddTask">'+
+            '    </div>'+
+            '</form>'
+        );
+        $('#modalFooter').addClass('hide');
+        if($('#listTaskAddAnggota').length){
+            btnReady();
+        }else{
+            alert('not ready');
+        }
+    });
+    
+    $('#taskContainer').on('click', 'tr', function(){
+        var taskDetail = $(this).find("td").eq(1).text();
+        var tglDeadline = $(this).find("td").eq(2).text();
+        selectedAnggotaTask = $(this).find("td").eq(3).text();
+
+        $('#modalPopUp').removeClass('hide');
+        $('#modalPopUp').addClass('modalAdd-container');
+        $('#modalHeader').removeClass('modalAdd-header');
+        $('#modalHeader').addClass('modalAdd-header');
+        $('#modalContent').removeClass('modalAdd-content');
+        $('#modalContent').addClass('modalAdd-content');
+        $('#modal-title').text('Options');
+        $('#modalContent').html(
+            '<form class="formAdd" method="post">'+
+            '	<div class="form-group">'+
+            '        <input type="text" class="form-control" name="txtTask" id="txtTaskDetail" placeholder="Task Detail" value="'+ taskDetail +'">'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '    	<small class="left select">Deadline</small>'+
+            '        <input type="date" name="tglTask" id="deadlineTask" class="form-control" value="'+ tglDeadline +'">'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '        <select class="form-control select" name="listAnggota" id="listTaskAnggota">'+
+            '            <option>Pilih Anggota</option>'+
+            '        </select>'+
+            '    </div>'+
+            '    <div class="form-group">'+
+            '	    <input type="submit" class="btn" value="Update" id="btnUpdateTask">'+
+            '    	<input type="submit" class="btn" value="Delete" id="btnDeleteTask">'+
+            '    </div>'+
+            '</form>'
+        );
+        $('#modalFooter').addClass('hide');
+        if($('#listTaskAnggota').length){
+            btnReady();
+        }else{
+            alert('not ready');
+        }
+    });
+
+    $('#homeFinance').on('click', function(){
+        $('#mainContainer').addClass('hide');
+        $('#taskContainer').addClass('hide');
+        $('#housemateContainer').addClass('hide');
+        $('#financeContainer').removeClass('hide');
+    });
+
+    $('#homeTask').on('click', function(){
+        $('#mainContainer').addClass('hide');
+        $('#taskContainer').removeClass('hide');
+        $('#housemateContainer').addClass('hide');
+        $('#financeContainer').addClass('hide');
+    });
+
+    $('#homeHousemate').on('click', function(){
+        $('#mainContainer').addClass('hide');
+        $('#taskContainer').addClass('hide');
+        $('#housemateContainer').removeClass('hide');
+        $('#financeContainer').addClass('hide');
+    });
+
+    $('#homeAddHousemate').on('click', function(){
+        $('#addHousemate').click();
+    });
+
+    $('#homeUpdateHousemate').on('click', function(){
+        $('#editHousemate').click();
+    });
+
+    $('#homeAddFinance').on('click', function(){
+        $('#addFinance').click();
+    });
+
+    $('#homeAddTask').on('click', function(){
+        $('#addTask').click();
+    });
 });;
