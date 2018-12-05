@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="card">
+                                <div class="card pointer" id="homeFinance">
                                     <div class="card-head">
                                         Finance
                                     </div>
@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="card">
+                                <div class="card pointer" id="homeTask">
                                     <div class="card-head">
                                         Upcoming Task
                                     </div>
@@ -171,33 +171,68 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="card">
-                                    <div class="card-head">Finance</div>
-                                    <div class="card-body">blablab</div>
+                                <div class="card pointer" id="homeHousemate">
+                                    <div class="card-head">Housemate</div>
+                                    <div class="card-body">
+                                        <?php if(isset($housemate) || !empty($housemate)){
+                                            $i=1;
+                                            foreach ($housemate as $row) : ?>
+                                                <p><?php echo $i++ .". ". $row->nama_anggota ?></p>
+                                            <?php endforeach ?>
+                                        <?php }else{ ?>
+                                            <p>No Housemate Yet</p>
+                                        <?php } ?>
+                                    </div>
                                 </div>
                             </div>
                             
 
                         </div>
                         <div class="row">
-                            <?php if(isset($housemate) || !empty($housemate)){
-                                $i=1;
-                                foreach ($housemate as $row) :?>
-                                    <div class="column">
-                                        <div class="card">
-                                            <div class="card-head">Housemate <?php echo $i++ ?></div>
-                                            <div class="card-body"><?php echo $row->nama_anggota;?></div>
-                                        </div>
-                                    </div>   
-                                <?php endforeach; ?>
-                            <?php }else{ ?>
-                                <div class="column">
-                                    <div class="card">
-                                        <div class="card-head">Housemate 0</div>
-                                        <div class="card-body">No Housemate Yet</div>
+                            <div class="column">
+                                <div class="card pointer menu" id="homeAddHousemate">
+                                    <div class="card-head"></div>
+                                    <div class="card-body">
+                                        <i class="Menuicon fas fa-plus-circle"></i>
+                                        <p>
+                                            Add New Housemate
+                                        </p>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            </div>
+                            <div class="column">
+                                <div class="card pointer menu" id="homeUpdateHousemate">
+                                    <div class="card-head"></div>
+                                    <div class="card-body">
+                                        <i class="Menuicon fas fa-user-edit"></i>
+                                        <p>
+                                            Update Housemate
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card pointer menu" id="homeAddFinance">
+                                    <div class="card-head"></div>
+                                    <div class="card-body">
+                                        <i class="Menuicon fas fa-plus-circle"></i>
+                                        <p>
+                                            Add Finance
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card pointer menu" id="homeAddTask">
+                                    <div class="card-head"></div>
+                                    <div class="card-body">
+                                        <i class="Menuicon fas fa-plus-circle"></i>
+                                        <p>
+                                            Add New Task
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="housemateContainer" class="hide">
@@ -218,7 +253,7 @@
                         <div class="row">
                             <?php if(isset($housemate) || !empty($housemate)){
                                 foreach($housemate as $row) : ?>
-                                    <div class="column">
+                                    <div class="column pointer">
                                         <div class="card">
                                             <div class="card-head">
                                                 <?php echo $row->nama_anggota; ?>
@@ -252,13 +287,14 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover pointer">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
                                                 <th>Detail Transaksi</th>
                                                 <th>Jumlah</th>
                                                 <th>Tanggal</th>
+                                                <th>Opsi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -267,20 +303,21 @@
                                                 foreach($finance as $row) : ?>
                                                     <tr>
                                                         <td><?php echo $number++; ?></td>
-                                                        <td><?php echo $row->detail_transaksi; ?></td>
+                                                        <td nowrap><?php echo $row->detail_transaksi; ?></td>
                                                         <?php if ($row->flag==1) {
                                                             echo "<td class='txtIncome'>Rp".$row->jumlah."</td>";
                                                         } else {
                                                             echo "<td class='txtExpenses'>Rp".$row->jumlah."</td>";
                                                         } ?>
-                                                        <td><?php echo $row->tanggal; ?></td>
+                                                        <td nowrap><?php echo $row->tanggal; ?></td>
+                                                        <td><button class="btn-danger">Delete</button></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php } else { ?>
                                                 <tr><td colspan="4">No records yet!</td></tr>
                                             <?php } ?>
                                         </tbody>
-                                        <span class="small right"><span class="txtIncome">Income</span>|<span class="txtExpenses">Expenses</span></span>
+                                        <span class="small right">Note : <span class="txtIncome">Income</span>|<span class="txtExpenses">Expenses</span></span>
                                     </table>
                                 </div>
                             </div>
@@ -289,24 +326,40 @@
                     <div id="taskContainer" class="hide">
                         <div class="card">
                             <div class="card-head">
-                                <span class="btnOpsi far fa-edit"></span>
-                                <span class="btnOpsi fas fa-plus-circle"></span>
+                                <span id="addTask" class="btnOpsi fas fa-plus-circle"></span>
                                 TASK
                             </div>
                             <div class="card-body">
-                                <table class="table table-hover">
-                                    <tr>
-                                       <td>Task</td> 
-                                       <td class="userPic fas fa-user-circle"></td>
-                                       <td class="userPic fas fa-user-circle"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Task</td> 
-                                        <td class="userPic fas fa-user-circle"></td>
-                                        <td class="userPic fas fa-user-circle"></td>
-                                        <td class="userPic fas fa-user-circle"></td>
-                                     </tr>
-                                </table>
+                                <small class="right">*Click on task list to get more options.</small>
+                                <div class="table-responsive">
+                                    <table class="table table-hover pointer">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th nowrap>Task Detail</th>
+                                                <th>Deadline</th>
+                                                <th>Housemate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if(isset($task) || !empty($task)){
+                                                $i = 1;
+                                                foreach($task as $t) : ?>
+                                                    <tr class="centerVertical">
+                                                        <td><?php echo $i++ ?></td>
+                                                        <td nowrap><?php echo $t->nama_task ?></td>
+                                                        <td nowrap><?php echo $t->tgl_task ?></td>
+                                                        <td class="userPic fas fa-user-circle" nowrap><?php echo $t->nama_anggota ?></td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            <?php }else{ ?>
+                                                <tr>
+                                                    <td colspan="3">No record yet!</td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
