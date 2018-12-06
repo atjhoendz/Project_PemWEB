@@ -452,7 +452,7 @@ $(document).ready(function () {
             '        <input type="number" name="jmlTrans" id="jmlTransaksi" class="form-control" placeholder="Masukan Jumlah Uang">'+
             '        <input type="date" name="tglTrans" id="tglTransaksi" class="form-control" placeholder="Masukan Tanggal Transaksi">'+
             '    </div>'+
-            '    <div class="form-group">'+
+            '    <div class="centerSlider">'+
             '        <span class="txtIncome">Pemasukan</span>'+
             '        <label class="switch" id="statusFinance">'+
             '            <input type="checkbox">'+
@@ -472,6 +472,23 @@ $(document).ready(function () {
         }else{
             alert('not ready');
         }
+    });
+
+
+
+    $("button[id^='btnDeleteFinance']").on('click', function(){
+        var id = $(this).val();
+        var url = baseUrl + '/deleteFinance';
+        $.post(url, {'id_Transaksi':id},
+            function (data) {
+                if(data == 'Success'){
+                    alert('Transaksi berhasil dihapus');
+                    location.reload();
+                }else{
+                    alert(data);
+                }
+            }
+        );
     });
 
     $('#addTask').on('click', function(){
@@ -554,6 +571,7 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        GetSetBalance();
     });
 
     $('#homeTask').on('click', function(){
@@ -584,5 +602,24 @@ $(document).ready(function () {
 
     $('#homeAddTask').on('click', function(){
         $('#addTask').click();
+    });
+
+    $('#gotoHome').on('click', function(){
+        $('#mainContainer').removeClass('hide');
+        $('#taskContainer').addClass('hide');
+        $('#housemateContainer').addClass('hide');
+        $('#financeContainer').addClass('hide');
+    });
+
+    $('#gotoHousemate').on('click', function(){
+        $('#homeHousemate').click();
+    });
+
+    $('#gotoFinance').on('click', function(){
+        $('#homeFinance').click();
+    });
+
+    $('#gotoTask').on('click', function(){
+        $('#homeTask').click();
     });
 });;
