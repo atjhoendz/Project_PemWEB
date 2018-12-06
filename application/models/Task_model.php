@@ -16,7 +16,7 @@
         }
 
         public function deleteTask_model($id_task){
-            return $this->db->delete('task', $id_task);
+            return $this->db->delete('task', $id_task); 
         }
     }
 ?>
