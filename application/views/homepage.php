@@ -310,7 +310,7 @@
                                                             echo "<td class='txtExpenses'>Rp".$row->jumlah."</td>";
                                                         } ?>
                                                         <td nowrap><?php echo $row->tanggal; ?></td>
-                                                        <td><button class="btn-danger">Delete</button></td>
+                                                        <td><button id="btnDeleteFinance<?php echo $number;?>" class="btn-danger" value="<?php echo $row->id_transaksi; ?>">Delete</button></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php } else { ?>
@@ -376,8 +376,11 @@
                 </div>
             </div>
             <!-- Footer -->
-            <div id="footer" class="footer bayangan-atas">
-                <span>&copy Project Pemrograman Web 2018 | E-Work Corp.</span>
+            <div id="footer" class="toolbarContainer bayangan-atas">
+                <i id="gotoHome" class="imgMenu fas fa-home"></i>
+                <i id="gotoHousemate" class="imgMenu fas fa-users"></i>
+                <i id="gotoFinance" class="imgMenu fas fa-dollar-sign"></i>
+                <i id="gotoTask" class="imgMenu fas fa-tasks"></i>
             </div>
         </div>
     </div>
