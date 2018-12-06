@@ -32,5 +32,9 @@
         public function addFinance_model($data_finance){
             return $this->db->insert('keuangan', $data_finance);
         }
+
+        public function deleteFinance_model($idTransaksi){
+            return $this->db->delete('keuangan', $idTransaksi);
+        }
     }
 ?>
