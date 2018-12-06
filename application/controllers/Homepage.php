@@ -103,6 +103,19 @@
             }
         }
 
+        function deleteFinance(){
+            $idTransaksi = $this->input->post('id_Transaksi');
+            $id = array(
+                'id_transaksi' => $idTransaksi
+            );
+
+            if($this->Finance_model->deleteFinance_model($id)){
+                echo 'Success';
+            }else{
+                echo 'Gagal Menghapus Data';
+            }
+        }
+
         function getTask(){
             echo json_encode($this->task_model->getTask_model());
         }
