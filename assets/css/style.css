@@ -620,15 +620,29 @@ ul ul a {
     background: #607d8b;
 }
 
-.footer{
+.toolbarContainer{
+    display: none;
+    width: 100%;
     background-color: #eeeeee;
-    text-align: right;
     position: fixed;
+    padding: 5px;
     bottom: 0;
     right: 0;
     left: 0;
-    width: 100%;
-    padding: 5px;
+    text-align: center;
+}
+
+.imgMenu{
+    color: #272848;
+    font-size: 35px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.imgMenu:hover,
+.imgMenu:focus{
+    color: #383c5e;
+    font-size: 40px;
 }
 
 .menu-icon {
@@ -754,10 +768,6 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
-.centerVertical{
-    margin: auto;
-}
-
 /* media queries */
 
 @media (max-width: 768px) {
@@ -814,5 +824,15 @@ input:checked + .slider:before {
     /* fix it on deploy */
     body{
         background-size: auto;        
+    }
+
+    .toolbarContainer{
+        display: inline;
+    }
+}
+
+@media (max-width: 395px){
+    .centerSlider{
+        display: inline-flex;
     }
 }
