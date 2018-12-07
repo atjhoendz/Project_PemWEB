@@ -61,6 +61,10 @@ input[type=submit]{
     width: 30%;
 }
 
+#nameHome{
+    font-size: 20px;
+}
+
 .input-register {
     height: 40px;
 }
@@ -250,6 +254,11 @@ a[aria-expanded="true"] {
     background: #272848;
 }
 
+.active{
+    color: #fff;
+    background: #272848;
+}
+
 a[data-toggle="collapse"] {
     position: relative;
 }
@@ -348,7 +357,7 @@ ul ul a {
 
 #mainContainer .row{
     margin: 0 -5px;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 #mainContainer .row:after{
@@ -592,7 +601,6 @@ ul ul a {
 .userPic:hover,
 .userPic:focus{
     color: #000;
-    font-size: 21px;
     font-weight: bold;
     text-decoration: none;
 }
@@ -633,7 +641,7 @@ ul ul a {
 }
 
 .imgMenu{
-    color: #272848;
+    color: #64668B;
     font-size: 35px;
     margin-left: 15px;
     margin-right: 15px;
@@ -641,8 +649,15 @@ ul ul a {
 
 .imgMenu:hover,
 .imgMenu:focus{
-    color: #383c5e;
+    color: #272848;
     font-size: 40px;
+    font-weight: bold;
+}
+
+.imgMenuFocus{
+    color: #272848;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .menu-icon {

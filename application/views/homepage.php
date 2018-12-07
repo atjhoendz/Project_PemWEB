@@ -32,13 +32,13 @@
                 <input type="hidden" id="baseUrl" value="<?php echo site_url('homepage'); ?>">
             </div>
             <ul class="list-unstyled components">
-                <li class="active">
+                <li id="sideHome" class="active">
                     <a id="homeBtn">
                         <i class="fas fa-home menu-icon"></i>
                         Home
                     </a>
                 </li>
-                <li>
+                <li id="sideHousemate">
                     <div class="a-group">
                         <a id="housemateBtn" class="a-left">
                             <i class="fas fa-users menu-icon"></i>
@@ -53,7 +53,7 @@
                             $i=1;
                             foreach ($housemate as $row) :?>
                                 <li>
-                                    <a href="<?php echo 'anggota/'.($i++);?>">
+                                    <a href="#">
                                         <i class="fas fa-user"></i>
                                         <?php echo $row->nama_anggota;?>
                                     </a>
@@ -69,7 +69,7 @@
                         <?php } ?>
                     </ul>
                 </li>
-                <li>
+                <li id="sideFinance">
                     <div class="a-group">
                         <a id="financeBtn" class="a-left">
                             <i class="fas fa-dollar-sign menu-icon"></i>
@@ -94,7 +94,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li id="sideTask">
                     <a id="btnTask">
                         <i class="fas fa-tasks menu-icon"></i>
                         Task
@@ -154,18 +154,34 @@
                                         Finance
                                     </div>
                                     <div class="card-body">
-                                        <p id="income">Pemasukan : Rp 10.000,-</p>
-                                        <p id="expenses">Pengeluaran : Rp 150.000,-</p>
+                                        <?php if((isset($income) || !empty($income) && (isset($expenses) || !empty($expenses)))){
+                                            foreach ($income as $inc) : ?>
+                                                <p>Pemasukan : Rp<?php echo $inc->income;?>,-</p>
+                                            <?php endforeach ?>
+                                            <?php foreach($expenses as $exp) : ?>
+                                                <p>Pengeluaran : Rp<?php echo $exp->expenses;?>,-</p>
+                                            <?php endforeach ?>
+                                        <?php }else{ ?>
+                                            <p>Pemasukan : Rp 0,-</p>
+                                            <p>Pengeluaran : Rp 0,-</p>
+                                        <?php } ?>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card pointer" id="homeTask">
                                     <div class="card-head">
-                                        Upcoming Task
+                                        Task
                                     </div>
                                     <div class="card-body">
-                                        20 Nov 2018 : Bayar Wifi
+                                        <?php if(isset($task)||!empty($task)){
+                                            foreach($task as $t): ?>
+                                                <p><?php echo $t->tgl_task." : ".$t->nama_task ?></p>
+                                            <?php endforeach ?>
+                                        <?php }else{ ?>
+                                                <p>No Task Yet</p>
+                                        <?php } ?>
                                     </div>
                                     
                                 </div>
@@ -287,7 +303,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover pointer">
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
@@ -310,7 +326,7 @@
                                                             echo "<td class='txtExpenses'>Rp".$row->jumlah."</td>";
                                                         } ?>
                                                         <td nowrap><?php echo $row->tanggal; ?></td>
-                                                        <td><button id="btnDeleteFinance<?php echo $number;?>" class="btn-danger" value="<?php echo $row->id_transaksi; ?>">Delete</button></td>
+                                                        <td><button id="btnDeleteFinance<?php echo $number;?>" class="btn-danger pointer" value="<?php echo $row->id_transaksi; ?>">Delete</button></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php } else { ?>
@@ -350,11 +366,13 @@
                                                         <td nowrap><?php echo $t->nama_task ?></td>
                                                         <td nowrap><?php echo $t->tgl_task ?></td>
                                                         <td class="userPic fas fa-user-circle" nowrap><?php echo $t->nama_anggota ?></td>
+                                                        <td class="hide"><?php echo $t->id_task;?></td>
+                                                        <td class="hide"><?php echo $t->id_anggota;?></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             <?php }else{ ?>
                                                 <tr>
-                                                    <td colspan="3">No record yet!</td>
+                                                    <td colspan="3">No record ye    t!</td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -377,7 +395,7 @@
             </div>
             <!-- Footer -->
             <div id="footer" class="toolbarContainer bayangan-atas">
-                <i id="gotoHome" class="imgMenu fas fa-home"></i>
+                <i id="gotoHome" class="imgMenu imgMenuFocus fas fa-home"></i>
                 <i id="gotoHousemate" class="imgMenu fas fa-users"></i>
                 <i id="gotoFinance" class="imgMenu fas fa-dollar-sign"></i>
                 <i id="gotoTask" class="imgMenu fas fa-tasks"></i>

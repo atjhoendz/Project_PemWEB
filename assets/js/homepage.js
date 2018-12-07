@@ -52,6 +52,14 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#sideHome').addClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').addClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();    
         }
@@ -63,7 +71,14 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').removeClass('hide');
         $('#financeContainer').addClass('hide');
-
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').addClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').addClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();    
         }
@@ -98,7 +113,9 @@ $(document).ready(function () {
             alert('not ready');
         }
     });
+    
     var selectedAnggotaTask;
+
     function btnReady(){
 
         $('#url-foto').on('change paste keyup', function(){
@@ -157,11 +174,10 @@ $(document).ready(function () {
                         dataAnggota.push(value);
                    });
                 }
+                listTaskAnggota.val(selectedAnggotaTask);
             }
         );
 
-        
-        
         var idAnggota;
         $('#list_housemate').change(function(){
             var selectedAnggota = $('#list_housemate').find(':selected');
@@ -283,17 +299,8 @@ $(document).ready(function () {
             e.preventDefault();
         });
 
-        // $('#listTaskAnggota option[value="Imr76"]').attr('selected', true);
-        // $('#listTaskAnggota').val('Imr76').trigger('change');
-        // alert(selectedAnggotaTask);
+        
 
-        $('#btnDeleteTask').on('click', function(e){
-            e.preventDefault();
-        })
-
-        $('#btnUpdateTask').on('click', function(e){
-            e.preventDefault();
-        });
     }
 
     // Get & Set Finance Balance
@@ -361,6 +368,14 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').addClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').addClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
         GetSetBalance();
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();    
@@ -373,6 +388,14 @@ $(document).ready(function () {
         $('#mainContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').addClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').addClass('imgMenuFocus');
         if($(window).width() <= 768){
             $('#sidebarCollapse').click();    
         }
@@ -423,7 +446,10 @@ $(document).ready(function () {
                     '</td>' +
                 '</tr>' +
             '</table>' +
-            '<h4>Teknik Informatika</h4><h5>Fakultas Matematika dan Ilmu Pengetahuan Alam</h5><h4>Universitas Padjadjaran</h4> <h2>{ Delphi 2017 }</h2>'
+            '<span>Teknik Informatika 2017</span><br>' +
+            '<span>Fakultas Matematika dan Ilmu Pengetahuan Alam</span><br>' +
+            '<span>Universitas Padjadjaran</span><br>' +
+            '<span>{Delphi 2017}</span>'
         );
         $('#modalFooter').removeClass('hide');
         $('#modalFooter').html(
@@ -529,7 +555,8 @@ $(document).ready(function () {
     $('#taskContainer').on('click', 'tr', function(){
         var taskDetail = $(this).find("td").eq(1).text();
         var tglDeadline = $(this).find("td").eq(2).text();
-        selectedAnggotaTask = $(this).find("td").eq(3).text();
+        var selectedIdTask = $(this).find("td").eq(4).text();
+        selectedAnggotaTask = $(this).find("td").eq(5).text();
 
         $('#modalPopUp').removeClass('hide');
         $('#modalPopUp').addClass('modalAdd-container');
@@ -561,6 +588,41 @@ $(document).ready(function () {
         $('#modalFooter').addClass('hide');
         if($('#listTaskAnggota').length){
             btnReady();
+            $('#btnDeleteTask').on('click', function(e){
+                var url = baseUrl + '/deleteTask';
+                $.post(url, {'idTask':selectedIdTask},
+                    function (data) {
+                        if(data == 'Success'){
+                            alert("Task berhasil dihapus");
+                            location.reload();
+                        }else{
+                            alert(data);
+                        }
+                    }
+                );
+                e.preventDefault();
+            })
+    
+            $('#btnUpdateTask').on('click', function(e){
+                var task = $('#txtTaskDetail').val();
+                var deadline = $('#deadlineTask').val();
+                var selectedTaskAnggota = $('#listTaskAnggota').find(':selected');
+                var idAnggota = selectedTaskAnggota.val();
+                var namaAnggota = selectedTaskAnggota.text();
+
+                var url = baseUrl + '/updateTask';
+                $.post(url, {'idTask' : selectedIdTask, 'idAnggota':idAnggota, 'taskDetail':task, 'namaAnggota':namaAnggota, 'deadlineTask':deadline},
+                    function (data) {
+                        if(data == 'Success'){
+                            alert('Memperbarui Data Berhasil');
+                            location.reload();
+                        }else{
+                            alert(data);
+                        }
+                    }
+                );
+                e.preventDefault();
+            });
         }else{
             alert('not ready');
         }
@@ -571,6 +633,14 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').addClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').addClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
         GetSetBalance();
     });
 
@@ -579,6 +649,14 @@ $(document).ready(function () {
         $('#taskContainer').removeClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').addClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').addClass('imgMenuFocus');
     });
 
     $('#homeHousemate').on('click', function(){
@@ -586,6 +664,14 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').removeClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').addClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').addClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
     });
 
     $('#homeAddHousemate').on('click', function(){
@@ -609,17 +695,51 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#sideHome').addClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').addClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
     });
 
     $('#gotoHousemate').on('click', function(){
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').addClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').addClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
         $('#homeHousemate').click();
     });
 
     $('#gotoFinance').on('click', function(){
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').addClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').addClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
         $('#homeFinance').click();
     });
 
     $('#gotoTask').on('click', function(){
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').removeClass('active');
+        $('#sideTask').addClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').removeClass('imgMenuFocus');
+        $('#gotoTask').addClass('imgMenuFocus');
         $('#homeTask').click();
     });
+
+    
 });;
