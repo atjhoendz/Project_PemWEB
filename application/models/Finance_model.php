@@ -9,14 +9,14 @@
 
         public function getIncome(){
             $idRumah = $this->session->idRumah;
-            $this->db->select('*')->where('flag', 1)->where('id_rumah', $idRumah);
+            $this->db->select('SUM(jumlah) AS income')->where('flag', 1)->where('id_rumah', $idRumah);
             $query = $this->db->get('keuangan');
             return $query->result();
         }
 
         public function getExpenses(){
             $idRumah = $this->session->idRumah;
-            $this->db->select('*')->where('flag', 0)->where('id_rumah', $idRumah);
+            $this->db->select('SUM(jumlah) AS expenses')->where('flag', 0)->where('id_rumah', $idRumah);
             $query = $this->db->get('keuangan');
             return $query->result();
         }
@@ -26,7 +26,7 @@
             $query = $this->db->query("SELECT (
                 (SELECT SUM(jumlah) FROM keuangan WHERE flag=1 AND id_rumah='".$idRumah."')
                 - (SELECT SUM(jumlah) FROM keuangan WHERE flag=0 AND id_rumah='".$idRumah."')) AS balance FROM keuangan LIMIT 1;");
-            return $query->result();
+            return $query->result();            
         }
 
         public function addFinance_model($data_finance){
