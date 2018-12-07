@@ -23,10 +23,18 @@
 
         public function getBalance(){
             $idRumah = $this->session->idRumah;
-            $query = $this->db->query("SELECT (
-                (SELECT SUM(jumlah) FROM keuangan WHERE flag=1 AND id_rumah='".$idRumah."')
-                - (SELECT SUM(jumlah) FROM keuangan WHERE flag=0 AND id_rumah='".$idRumah."')) AS balance FROM keuangan LIMIT 1;");
-            return $query->result();
+            if ($this->getIncome() == NULL){
+                $query = $this->db->query("SELECT(SELECT SUM(jumlah) FROM keuangan WHERE flag=0 AND id_rumah='".$idRumah."') * -1 AS balance FROM keuangan");
+                return $query->result();
+            } else if ($this->getExpenses() == NULL){
+                $query = $this->db->query("SELECT(SELECT SUM(jumlah) FROM keuangan WHERE flag=1 AND id_rumah='".$idRumah."') AS balance FROM keuangan");
+                return $query->result();            
+            } else {
+                $query = $this->db->query("SELECT (
+                    (SELECT SUM(jumlah) FROM keuangan WHERE flag=1 AND id_rumah='".$idRumah."')
+                    - (SELECT SUM(jumlah) FROM keuangan WHERE flag=0 AND id_rumah='".$idRumah."')) AS balance FROM keuangan LIMIT 1;");
+                return $query->result();
+            }
         }
 
         public function addFinance_model($data_finance){
