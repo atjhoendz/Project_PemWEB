@@ -313,13 +313,18 @@ $(document).ready(function () {
                     $.each(data, function (index, value) { 
                          bal = value.balance; 
                     });
-                    if(bal < 0){
-                        $('#txtBalance').css({'color':'red'});
-                        $('#txtBalance').text('Rp' + bal);
-                    }else{
-                        $('#txtBalance').css({'color':'lightgreen'});
-                        $('#txtBalance').text('Rp' + bal);
+                    if(bal != null){
+                        if(bal < 0){
+                            $('#txtBalance').css({'color':'red'});
+                            $('#txtBalance').text('Rp' + bal);
+                        }else{
+                            $('#txtBalance').css({'color':'lightgreen'});
+                            $('#txtBalance').text('Rp' + bal);
+                        }
+                    } else {
+                        $('#txtBalance').text('Rp0');
                     }
+                    
                 }
             }
         );
