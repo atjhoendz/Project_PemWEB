@@ -23,10 +23,10 @@
 
         public function getBalance(){
             $idRumah = $this->session->idRumah;
-            if ($this->getIncome() == NULL){
+            if ($this->db->select('*')->where('flag', 1)->where('id_rumah', $idRumah)->get('keuangan')->result() == NULL){
                 $query = $this->db->query("SELECT(SELECT SUM(jumlah) FROM keuangan WHERE flag=0 AND id_rumah='".$idRumah."') * -1 AS balance FROM keuangan");
                 return $query->result();
-            } else if ($this->getExpenses() == NULL){
+            } else if ($this->db->select('*')->where('flag', 0)->where('id_rumah', $idRumah)->get('keuangan')->result() == NULL){
                 $query = $this->db->query("SELECT(SELECT SUM(jumlah) FROM keuangan WHERE flag=1 AND id_rumah='".$idRumah."') AS balance FROM keuangan");
                 return $query->result();            
             } else {
