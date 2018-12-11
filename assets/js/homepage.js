@@ -52,6 +52,8 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#IncomeContainer').addClass('hide');         
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').addClass('active');
         $('#sideHousemate').removeClass('active');
         $('#sideFinance').removeClass('active');
@@ -71,6 +73,8 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').removeClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#IncomeContainer').addClass('hide');         
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').removeClass('active');
         $('#sideHousemate').addClass('active');
         $('#sideFinance').removeClass('active');
@@ -373,6 +377,8 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        $('#IncomeContainer').addClass('hide');         
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').removeClass('active');
         $('#sideHousemate').removeClass('active');
         $('#sideFinance').addClass('active');
@@ -393,6 +399,8 @@ $(document).ready(function () {
         $('#mainContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#IncomeContainer').addClass('hide');         
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').removeClass('active');
         $('#sideHousemate').removeClass('active');
         $('#sideFinance').removeClass('active');
@@ -483,10 +491,10 @@ $(document).ready(function () {
             '        <input type="number" name="jmlTrans" id="jmlTransaksi" class="form-control" placeholder="Masukan Jumlah Uang">'+
             '        <input type="date" name="tglTrans" id="tglTransaksi" class="form-control" placeholder="Masukan Tanggal Transaksi">'+
             '    </div>'+
-            '    <div class="centerSlider">'+
+            '    <div class="centerSlider" id="slider">'+
             '        <span class="txtIncome">Pemasukan</span>'+
             '        <label class="switch" id="statusFinance">'+
-            '            <input type="checkbox">'+
+            '            <input id="status" type="checkbox">'+
             '        	<span class="slider round"></span>'+
             '        </label>'+
             '        <span class="txtExpenses">Pengeluaran</span>'+
@@ -638,6 +646,8 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').removeClass('hide');
+        $('#IncomeContainer').addClass('hide');         
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').removeClass('active');
         $('#sideHousemate').removeClass('active');
         $('#sideFinance').addClass('active');
@@ -654,6 +664,8 @@ $(document).ready(function () {
         $('#taskContainer').removeClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#IncomeContainer').addClass('hide');         
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').removeClass('active');
         $('#sideHousemate').removeClass('active');
         $('#sideFinance').removeClass('active');
@@ -669,6 +681,8 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').removeClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#IncomeContainer').addClass('hide');
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').removeClass('active');
         $('#sideHousemate').addClass('active');
         $('#sideFinance').removeClass('active');
@@ -700,6 +714,8 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        $('#IncomeContainer').addClass('hide');
+        $('#ExpensesContainer').addClass('hide');
         $('#sideHome').addClass('active');
         $('#sideHousemate').removeClass('active');
         $('#sideFinance').removeClass('active');
@@ -746,5 +762,55 @@ $(document).ready(function () {
         $('#homeTask').click();
     });
 
+    $('#sideIncome').on('click', function(){
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').addClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').addClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
+        $('#IncomeContainer').removeClass('hide');
+        $('#ExpensesContainer').addClass('hide');
+        $('#mainContainer').addClass('hide');
+        $('#taskContainer').addClass('hide');
+        $('#housemateContainer').addClass('hide');
+        $('#financeContainer').addClass('hide');
+    });
+
+    $('#sideExpenses').on('click', function(){
+        $('#sideHome').removeClass('active');
+        $('#sideHousemate').removeClass('active');
+        $('#sideFinance').addClass('active');
+        $('#sideTask').removeClass('active');
+        $('#gotoHome').removeClass('imgMenuFocus');
+        $('#gotoHousemate').removeClass('imgMenuFocus');
+        $('#gotoFinance').addClass('imgMenuFocus');
+        $('#gotoTask').removeClass('imgMenuFocus');
+        $('#ExpensesContainer').removeClass('hide');
+        $('#IncomeContainer').addClass('hide');
+        $('#mainContainer').addClass('hide');
+        $('#taskContainer').addClass('hide');
+        $('#housemateContainer').addClass('hide');
+        $('#financeContainer').addClass('hide');
+    });
     
+    $('#addIncome').on('click', function(){
+        $('#addFinance').click();
+        if($('#btnAddFinance').length){
+            $('#modal-title').text('Add Income');
+            $('#status').prop("checked", false);
+            $('#slider').hide();
+        }
+    });
+
+    $('#addExpenses').on('click', function(){
+        $('#addFinance').click();
+        if($('#btnAddFinance').length){
+            $('#modal-title').text('Add Expenses');
+            $('#status').prop("checked", true);
+            $('#slider').hide();
+        }
+    })
 });;
