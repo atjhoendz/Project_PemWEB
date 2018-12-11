@@ -777,6 +777,9 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();    
+        }
     });
 
     $('#sideExpenses').on('click', function(){
@@ -794,6 +797,9 @@ $(document).ready(function () {
         $('#taskContainer').addClass('hide');
         $('#housemateContainer').addClass('hide');
         $('#financeContainer').addClass('hide');
+        if($(window).width() <= 768){
+            $('#sidebarCollapse').click();    
+        }
     });
     
     $('#addIncome').on('click', function(){
