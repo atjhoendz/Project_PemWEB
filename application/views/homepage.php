@@ -49,11 +49,11 @@
                         </a>
                     </div>
                     <ul class="collapse list-unstyled" id="HousemateSubmenu">
-                        <?php if(isset($housemate) || !empty($housemate)){
+                        <?php if((isset($housemate) || !empty($housemate)) && $housemate != null){
                             $i=1;
                             foreach ($housemate as $row) :?>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i class="fas fa-user"></i>
                                         <?php echo $row->nama_anggota;?>
                                     </a>
@@ -81,13 +81,13 @@
                     </div>
                     <ul class="collapse list-unstyled" id="FinanceSubmenu">
                         <li>
-                            <a href="#">
+                            <a id="sideIncome">
                                 <i class="fas fa-chevron-circle-down"></i>
                                 Income
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a id="sideExpenses">
                                 <i class="fas fa-chevron-circle-up"></i>
                                 Expenses
                             </a>
@@ -154,11 +154,11 @@
                                         Finance
                                     </div>
                                     <div class="card-body">
-                                        <?php if((isset($income) || !empty($income) && (isset($expenses) || !empty($expenses)))){
-                                            foreach ($income as $inc) : ?>
+                                        <?php if((isset($jmlincome) || !empty($jmlincome) && (isset($jmlexpenses) || !empty($jmlexpenses)))){
+                                            foreach ($jmlincome as $inc) : ?>
                                                 <p>Pemasukan : Rp<?php echo $inc->income;?>,-</p>
                                             <?php endforeach ?>
-                                            <?php foreach($expenses as $exp) : ?>
+                                            <?php foreach($jmlexpenses as $exp) : ?>
                                                 <p>Pengeluaran : Rp<?php echo $exp->expenses;?>,-</p>
                                             <?php endforeach ?>
                                         <?php }else{ ?>
@@ -175,7 +175,7 @@
                                         Task
                                     </div>
                                     <div class="card-body">
-                                        <?php if(isset($task)||!empty($task)){
+                                        <?php if((isset($task)||!empty($task))&& $task != null){
                                             foreach($task as $t): ?>
                                                 <p><?php echo $t->tgl_task." : ".$t->nama_task ?></p>
                                             <?php endforeach ?>
@@ -190,7 +190,7 @@
                                 <div class="card pointer" id="homeHousemate">
                                     <div class="card-head">Housemate</div>
                                     <div class="card-body">
-                                        <?php if(isset($housemate) || !empty($housemate)){
+                                        <?php if((isset($housemate) || !empty($housemate)) && $housemate != null){
                                             $i=1;
                                             foreach ($housemate as $row) : ?>
                                                 <p><?php echo $i++ .". ". $row->nama_anggota ?></p>
@@ -267,7 +267,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <?php if(isset($housemate) || !empty($housemate)){
+                            <?php if((isset($housemate) || !empty($housemate))&& $housemate != null){
                                 foreach($housemate as $row) : ?>
                                     <div class="column pointer">
                                         <div class="card">
@@ -314,7 +314,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if(isset($finance) || !empty($finance)){
+                                            <?php if((isset($finance) || !empty($finance)) && $finance != null){
                                                 $number = 1;
                                                 foreach($finance as $row) : ?>
                                                     <tr>
@@ -330,10 +330,116 @@
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php } else { ?>
-                                                <tr><td colspan="4">No records yet!</td></tr>
+                                                <tr><td colspan="5">No records yet!</td></tr>
                                             <?php } ?>
                                         </tbody>
                                         <span class="small right">Note : <span class="txtIncome">Income</span>|<span class="txtExpenses">Expenses</span></span>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="IncomeContainer" class="hide">
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="headFinance">
+                                        <?php if((isset($jmlincome) || !empty($jmlincome) && $jmlincome != null)){
+                                            foreach ($jmlincome as $inc) : ?>
+                                                <span class="txtLeft" id="txtTitle">Rp<?php echo $inc->income; ?></span>
+                                            <?php endforeach ?>
+                                        <?php }else{ ?>
+                                            <span class="txtLeft" id="txtTitle">Rp0</span>
+                                        <?php } ?>
+                                    <span>Income</span>
+                                    <span id="addIncome" class="btnOpsi fas fa-plus-circle"></span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Detail Transaksi</th>
+                                                <th>Jumlah</th>
+                                                <th>Tanggal</th>
+                                                <th>Opsi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if((isset($income) || !empty($income)) && $income != null){
+                                                $number = 1;
+                                                foreach($income as $row) : ?>
+                                                    <tr>
+                                                        <td><?php echo $number++; ?></td>
+                                                        <td nowrap><?php echo $row->detail_transaksi; ?></td>
+                                                        <?php if ($row->flag==1) {
+                                                            echo "<td class='txtIncome'>Rp".$row->jumlah."</td>";
+                                                        } else {
+                                                            echo "<td class='txtExpenses'>Rp".$row->jumlah."</td>";
+                                                        } ?>
+                                                        <td nowrap><?php echo $row->tanggal; ?></td>
+                                                        <td><button id="btnDeleteFinance<?php echo $number;?>" class="btn-danger pointer" value="<?php echo $row->id_transaksi; ?>">Delete</button></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php } else { ?>
+                                                <tr><td colspan="5">No records yet!</td></tr>
+                                            <?php } ?>
+                                        </tbody>
+                                        <span class="small right">Note : <span class="txtIncome">Income</span></span>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ExpensesContainer" class="hide">
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="headFinance">
+                                        <?php if((isset($jmlexpenses) || !empty($jmlexpenses) && $jmlexpenses != null)){
+                                            foreach ($jmlexpenses as $exp) : ?>
+                                                <span class="txtLeft" id="txtTitle">Rp<?php echo $exp->expenses; ?></span>
+                                            <?php endforeach ?>
+                                        <?php }else{ ?>
+                                            <span class="txtLeft" id="txtTitle">Rp0</span>
+                                        <?php } ?>
+                                    <span>Expenses</span>
+                                    <span id="addExpenses" class="btnOpsi fas fa-plus-circle"></span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Detail Transaksi</th>
+                                                <th>Jumlah</th>
+                                                <th>Tanggal</th>
+                                                <th>Opsi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if((isset($expenses) || !empty($expenses)) && $expenses != null){
+                                                $number = 1;
+                                                foreach($expenses as $row) : ?>
+                                                    <tr>
+                                                        <td><?php echo $number++; ?></td>
+                                                        <td nowrap><?php echo $row->detail_transaksi; ?></td>
+                                                        <?php if ($row->flag==1) {
+                                                            echo "<td class='txtIncome'>Rp".$row->jumlah."</td>";
+                                                        } else {
+                                                            echo "<td class='txtExpenses'>Rp".$row->jumlah."</td>";
+                                                        } ?>
+                                                        <td nowrap><?php echo $row->tanggal; ?></td>
+                                                        <td><button id="btnDeleteFinance<?php echo $number;?>" class="btn-danger pointer" value="<?php echo $row->id_transaksi; ?>">Delete</button></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php } else { ?>
+                                                <tr><td colspan="5">No records yet!</td></tr>
+                                            <?php } ?>
+                                        </tbody>
+                                        <span class="small right">Note : <span class="txtExpenses">Expenses</span></span>
                                     </table>
                                 </div>
                             </div>
@@ -358,7 +464,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if(isset($task) || !empty($task)){
+                                            <?php if((isset($task) || !empty($task)) && $task != null){
                                                 $i = 1;
                                                 foreach($task as $t) : ?>
                                                     <tr class="centerVertical">
@@ -372,7 +478,7 @@
                                                 <?php endforeach ?>
                                             <?php }else{ ?>
                                                 <tr>
-                                                    <td colspan="3">No record ye    t!</td>
+                                                    <td colspan="4">No record yet!</td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
