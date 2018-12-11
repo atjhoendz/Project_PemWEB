@@ -14,6 +14,8 @@
                 $data['finance'] = $this->Finance_model->getFinance_Model();
                 $data['expenses'] = $this->Finance_model->getExpenses();
                 $data['income'] = $this->Finance_model->getIncome();
+                $data['jmlincome'] = $this->Finance_model->getjmlIncome();
+                $data['jmlexpenses'] = $this->Finance_model->getjmlExpenses();
                 $data['balance'] = $this->Finance_model->getBalance();
                 $data['task'] = $this->task_model->getTask_model();
                 $this->load->view('homepage', $data);
